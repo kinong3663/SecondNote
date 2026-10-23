@@ -6,10 +6,15 @@
  */
 import { createHash } from 'node:crypto';
 
-const USERID = 'bfcb278e7a';
-const SECRET = 'REDACTED-ROTATE-THIS-VOD-KEY';
-const VID = 'bfcb278e7a88e2d51e23ba453596ddf2_b';
-const CHANNEL = '4711207';
+const USERID = process.env.POLYV_VOD_USERID;
+const SECRET = process.env.POLYV_VOD_SECRETKEY;
+const VID = process.env.POLYV_DEMO_VIDEO_ID || 'bfcb278e7a88e2d51e23ba453596ddf2_b';
+const CHANNEL = process.env.POLYV_DEMO_CHANNEL_ID || '4711207';
+
+if (!USERID || !SECRET) {
+  console.error('缺少点播凭证：先设置 POLYV_VOD_USERID / POLYV_VOD_SECRETKEY');
+  process.exit(1);
+}
 
 const sign = (params) =>
   createHash('sha1')

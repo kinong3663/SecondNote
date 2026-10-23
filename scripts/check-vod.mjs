@@ -13,11 +13,16 @@ const ROOT = process.cwd();
 const OUT = path.join(ROOT, 'tmp', 'vod-report.md');
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 
-const APP_ID = 'REDACTED-APPID';
-const APP_SECRET = 'REDACTED-ROTATE-THIS-SECRET';
-const VOD_USERID = 'bfcb278e7a';
-const VOD_SECRET = 'REDACTED-ROTATE-THIS-VOD-KEY';
-const CHANNEL = '4711207';
+const APP_ID = process.env.POLYV_APP_ID;
+const APP_SECRET = process.env.POLYV_APP_SECRET;
+const VOD_USERID = process.env.POLYV_VOD_USERID;
+const VOD_SECRET = process.env.POLYV_VOD_SECRETKEY;
+const CHANNEL = process.env.POLYV_DEMO_CHANNEL_ID || '4711207';
+
+if (!APP_ID || !APP_SECRET || !VOD_USERID || !VOD_SECRET) {
+  console.error('缺少保利威凭证：先设置 POLYV_APP_ID / POLYV_APP_SECRET / POLYV_VOD_USERID / POLYV_VOD_SECRETKEY');
+  process.exit(1);
+}
 
 const liveSign = (p) =>
   createHash('md5')

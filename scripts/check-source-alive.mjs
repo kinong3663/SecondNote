@@ -11,9 +11,14 @@ const ROOT = process.cwd();
 const OUT = path.join(ROOT, 'tmp', 'source-alive.md');
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 
-const APP_ID = 'REDACTED-APPID';
-const APP_SECRET = 'REDACTED-ROTATE-THIS-SECRET';
-const CHANNEL = '4711207';
+const APP_ID = process.env.POLYV_APP_ID;
+const APP_SECRET = process.env.POLYV_APP_SECRET;
+const CHANNEL = process.env.POLYV_DEMO_CHANNEL_ID || '4711207';
+
+if (!APP_ID || !APP_SECRET) {
+  console.error('缺少保利威凭证：先设置 POLYV_APP_ID / POLYV_APP_SECRET（或从 .env.local 读取）');
+  process.exit(1);
+}
 
 const sign = (params) =>
   createHash('md5')
