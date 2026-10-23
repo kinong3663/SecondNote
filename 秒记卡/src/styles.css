@@ -1418,27 +1418,63 @@ a {
   border-top: 1px solid var(--line);
 }
 
+/* 页脚 = 页头品牌区的缩小版：同一套字体、同一组颜色，只是整体降一档 */
 .site-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
   width: min(1480px, 100%);
-  min-height: 84px;
+  min-height: 88px;
   margin: 0 auto;
-  color: var(--muted);
-  font-family: var(--font-body);
-  font-size: 13px;
-  letter-spacing: 0.01em;
   border-top: 1px solid var(--line);
 }
 
-/* 英文标识保留等宽字体的编辑感，中文那句用正文字体，读起来才不挤 */
-.site-footer > span:first-child {
-  font-family: var(--font-mono);
-  font-size: 11.5px;
+.footer-brand {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.footer-brand .brand__mark {
+  width: 26px;
+  height: 26px;
+  box-shadow: inset 0 0 0 5px rgba(36, 105, 243, 0.08);
+}
+
+.footer-brand .brand__mark::before {
+  inset: 6px;
+}
+
+.footer-brand .brand__mark::after {
+  width: 4px;
+  height: 4px;
+  box-shadow: 0 0 12px var(--accent-bright);
+}
+
+.footer-brand .brand__text {
+  gap: 1px;
+}
+
+.footer-brand .brand__text strong {
+  font-size: 14px;
+  font-weight: 700;
   letter-spacing: 0.1em;
+  color: var(--text);
+}
+
+.footer-brand .brand__text small {
   color: var(--subtle);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+}
+
+.footer-line {
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
 }
 
 .toast {

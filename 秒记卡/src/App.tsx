@@ -445,8 +445,14 @@ export default function App() {
       </main>
 
       <footer className="site-footer">
-        <span>SECOND NOTE / 2026</span>
-        <span>把视频看完，也把重点带走。</span>
+        <div className="footer-brand">
+          <span className="brand__mark" aria-hidden="true" />
+          <span className="brand__text">
+            <strong>秒记卡</strong>
+            <small>SECOND NOTE / 2026</small>
+          </span>
+        </div>
+        <span className="footer-line">把视频看完，也把重点带走。</span>
       </footer>
 
       {notice && (
