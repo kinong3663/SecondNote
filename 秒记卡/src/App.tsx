@@ -336,6 +336,12 @@ export default function App() {
           >
             {railOpen ? '收起' : `秒记 ${notes.length}`}
           </button>
+          {injected.teacherUrl && (
+            <a className="teacher-entry" href={teacherHref}>
+              教师端复盘
+              <ArrowIcon />
+            </a>
+          )}
         </div>
       </header>
 
@@ -456,11 +462,6 @@ export default function App() {
       <footer className="site-footer">
         <span>SECOND NOTE / 2026</span>
         <span>把视频看完，也把重点带走。</span>
-        {injected.teacherUrl && (
-          <a className="site-footer__teacher" href={teacherHref}>
-            教师端复盘 →
-          </a>
-        )}
       </footer>
 
       {notice && (
