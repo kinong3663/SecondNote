@@ -6,10 +6,20 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const CHANNEL = '4711207';
-const VIDEO_KEY = 'vod:bfcb278e7a88e2d51e23ba453596ddf2_b';
-const JSONL = `D:/保利威黑客松/秒记卡/work/notes/${CHANNEL}/${VIDEO_KEY.replace(/[^a-zA-Z0-9_-]/g, '_')}.jsonl`;
+const HERE = path.dirname(fileURLToPath(import.meta.url)); // demo-video/
+const REPO = path.resolve(HERE, '..'); // 仓库根
+const CHANNEL = process.env.DEMO_CHANNEL_ID || '4711207';
+const VIDEO_KEY = process.env.DEMO_VIDEO_KEY || 'vod:bfcb278e7a88e2d51e23ba453596ddf2_b';
+const JSONL = path.join(
+  REPO,
+  '秒记卡',
+  'work',
+  'notes',
+  CHANNEL,
+  `${VIDEO_KEY.replace(/[^a-zA-Z0-9_-]/g, '_')}.jsonl`,
+);
 
 const cards = fs
   .readFileSync(JSONL, 'utf8')
@@ -51,8 +61,13 @@ const storage = [
   { name: 'second-note:visitor-id', value: visitorId },
 ];
 
-const state = { cookies: [], origins: [{ origin: 'http://127.0.0.1:8787', localStorage: storage }] };
-const target = 'D:/保利威黑客松/demo-video/raw/segments/storage-state.json';
+const state = {
+  cookies: [],
+  origins: [
+    { origin: process.env.DEMO_BASE || 'http://127.0.0.1:8787', localStorage: storage },
+  ],
+};
+const target = path.join(HERE, 'raw', 'segments', 'storage-state.json');
 fs.writeFileSync(target, JSON.stringify(state), 'utf8');
 console.log('写入', target);
 for (const n of notes) console.log(`  ${n.time}s ${n.type} ${n.summary}`);

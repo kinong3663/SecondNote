@@ -8,10 +8,17 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const APP_ID = process.env.POLYV_APP_ID || 'REDACTED-APPID';
-const SECRET = process.env.POLYV_APP_SECRET || 'REDACTED-ROTATE-THIS-SECRET';
+const APP_ID = process.env.POLYV_APP_ID;
+const SECRET = process.env.POLYV_APP_SECRET;
 const CHANNEL = process.env.POLYV_CHANNEL_ID || '4711207';
 const RAW = path.join(process.cwd(), 'public', 'data', 'raw');
+
+if (!APP_ID || !SECRET) {
+  console.error('缺少保利威凭证：请先设置环境变量 POLYV_APP_ID / POLYV_APP_SECRET');
+  console.error('  PowerShell:  $env:POLYV_APP_ID="xxx"; $env:POLYV_APP_SECRET="xxx"');
+  console.error('  或写进 秒记卡/.env.local，再用 node --env-file-if-exists 运行');
+  process.exit(1);
+}
 
 const md5sign = (p) => crypto.createHash('md5')
   .update(SECRET + Object.keys(p).filter((k) => p[k] !== '' && p[k] != null).sort().map((k) => k + p[k]).join('') + SECRET, 'utf8')

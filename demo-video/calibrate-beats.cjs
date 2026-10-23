@@ -1,7 +1,8 @@
-﻿const fs = require('fs');
+const fs = require('fs');
 const beats = require('./raw/segments/beats.json');
 const ff = require('child_process');
-const FF = 'C:/Users/zhong/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-9.0.2-full_build/bin/ffprobe.exe';
+// ffprobe 默认走 PATH；本机装在别处时可以 set FFPROBE_PATH=C:\...\ffprobe.exe
+const FF = process.env.FFPROBE_PATH || 'ffprobe';
 const dur = (f) => Number(ff.execFileSync(FF, ['-v','error','-show_entries','format=duration','-of','default=noprint_wrappers=1:nokey=1',f]).toString().trim());
 for (const s of beats.segments) {
   const v = dur(`剪辑素材/${s.index}-${s.name}.mp4`);

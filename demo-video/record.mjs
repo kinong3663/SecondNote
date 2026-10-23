@@ -17,8 +17,11 @@ import { chromium } from '../秒记卡/node_modules/playwright-core/index.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
-const BASE = 'http://127.0.0.1:8787';
+// 本机浏览器与站点地址都可以用环境变量覆盖：
+//   $env:EDGE_PATH="C:\...\msedge.exe"   $env:DEMO_BASE="http://127.0.0.1:8787"
+const EDGE =
+  process.env.EDGE_PATH || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
+const BASE = process.env.DEMO_BASE || 'http://127.0.0.1:8787';
 const OUT_DIR = path.join(process.cwd(), 'raw', 'segments');
 const TMP_DIR = path.join(OUT_DIR, '.tmp');
 fs.mkdirSync(TMP_DIR, { recursive: true });

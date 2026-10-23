@@ -9,7 +9,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
-const FF = 'C:/Users/zhong/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-9.0.2-full_build/bin/ffmpeg.exe';
+// ffmpeg 默认走 PATH；本机装在别处时可以 $env:FFMPEG_PATH="C:\...\ffmpeg.exe"
+const FF = process.env.FFMPEG_PATH || 'ffmpeg';
 const SRC = '剪辑素材';
 const OUT = path.join(SRC, '精简');
 fs.mkdirSync(OUT, { recursive: true });

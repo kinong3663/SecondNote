@@ -30,3 +30,11 @@ tmp-teacher.mjs
 demo-video/raw/
 demo-video/剪辑素材/**/*.mp4
 demo-video/剪辑素材/**/*.png
+demo-video/成片/
+
+# 本地实验产物（remotion 试做、图片包、日志），不进版本库
+remotion-demo/
+痛点段-图片包/
+*.log
+.venv/
+__pycache__/

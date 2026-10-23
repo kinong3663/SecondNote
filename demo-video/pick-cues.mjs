@@ -1,7 +1,18 @@
 /** 挑几个字幕内容像样的时间点，给演示录屏用。输出到 raw/cues.txt */
 import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const file = 'D:/保利威黑客松/秒记卡/work/subtitles/srt-vod-bfcb278e7a88e2d51e23ba453596ddf2_b.json';
+const HERE = path.dirname(fileURLToPath(import.meta.url));
+const REPO = path.resolve(HERE, '..');
+const VIDEO_ID = process.env.DEMO_VIDEO_ID || 'bfcb278e7a88e2d51e23ba453596ddf2_b';
+const file = path.join(
+  REPO,
+  '秒记卡',
+  'work',
+  'subtitles',
+  `srt-vod-${VIDEO_ID}.json`,
+);
 const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
 const cues = raw.items ?? raw.cues ?? [];
 const targets = [36 * 60 + 21, 59 * 60 + 1, 134 * 60 + 6];
@@ -21,5 +32,5 @@ for (const t of targets) {
   }
 }
 
-fs.writeFileSync('D:/保利威黑客松/demo-video/raw/cues.txt', lines.join('\n'), 'utf8');
+fs.writeFileSync(path.join(HERE, 'raw', 'cues.txt'), lines.join('\n'), 'utf8');
 console.log('cues:', cues.length);
