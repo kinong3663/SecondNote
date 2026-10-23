@@ -424,21 +424,6 @@ export default function App() {
               </a>
             </div>
           </section>
-
-          <div className="value-strip">
-            <div>
-              <span>01</span>
-              <p>一键捕捉当前画面与字幕</p>
-            </div>
-            <div>
-              <span>02</span>
-              <p>自动整理成可编辑的一句话</p>
-            </div>
-            <div>
-              <span>03</span>
-              <p>点回时间轴，原声原景重现</p>
-            </div>
-          </div>
         </section>
 
         <NoteRail

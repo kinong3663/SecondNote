@@ -888,47 +888,6 @@ a {
   stroke-width: 1.4;
 }
 
-.value-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 26px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.value-strip div {
-  display: flex;
-  gap: 13px;
-  align-items: baseline;
-  min-width: 0;
-  padding: 18px 19px;
-  border-right: 1px solid var(--line);
-}
-
-.value-strip div:first-child {
-  padding-left: 0;
-}
-
-.value-strip div:last-child {
-  border-right: 0;
-}
-
-.value-strip span {
-  flex: none;
-  color: var(--accent);
-  font-family: var(--font-mono);
-  font-size: 8px;
-}
-
-.value-strip p {
-  overflow: hidden;
-  margin: 0;
-  color: var(--muted);
-  font-size: 10px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .note-rail {
   display: flex;
   position: sticky;
@@ -1819,20 +1778,6 @@ a {
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-  }
-
-  .value-strip {
-    grid-template-columns: 1fr;
-  }
-
-  .value-strip div {
-    padding: 13px 0;
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .value-strip div:last-child {
-    border-bottom: 0;
   }
 
   .toast {
