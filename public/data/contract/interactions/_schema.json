@@ -1,0 +1,53 @@
+{
+ "version": 1,
+ "note": "互动线格式。当前账号实测 0 条；后续模拟数据按此格式生成，source 标 sim 即可被引擎消费。",
+ "file": "contract/interactions/<sessionId>.json",
+ "root": {
+  "sessionId": "string",
+  "source": "'real' | 'sdk' | 'sim'",
+  "events": "InteractionEvent[]"
+ },
+ "event": {
+  "t": "number  // 相对开播秒（与人数曲线同一根轴）",
+  "type": "enum: lottery | checkin | answer_card | questionnaire | like | qa | product | gift | notice | chat",
+  "joined": "number?  // 参与人数",
+  "total": "number?   // 可参与人数",
+  "result": "object?  // 结果，如 { winnerCount, prize } / { correctRate }",
+  "payload": "object?  // 原始字段，供 UI 展示",
+  "source": "'real' | 'sdk' | 'sim'"
+ },
+ "example": {
+  "sessionId": "hcvi46hzlg",
+  "source": "sim",
+  "events": [
+   {
+    "t": 420,
+    "type": "checkin",
+    "joined": 31,
+    "total": 41,
+    "source": "sim"
+   },
+   {
+    "t": 1513,
+    "type": "answer_card",
+    "joined": 28,
+    "total": 40,
+    "result": {
+     "correctRate": 0.46
+    },
+    "source": "sim"
+   },
+   {
+    "t": 2600,
+    "type": "lottery",
+    "joined": 35,
+    "total": 38,
+    "result": {
+     "winnerCount": 5,
+     "prize": "定制周边"
+    },
+    "source": "sim"
+   }
+  ]
+ }
+}

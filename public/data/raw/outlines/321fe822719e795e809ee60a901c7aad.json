@@ -1,0 +1,63 @@
+{
+ "status": "success",
+ "outline": {
+  "introduction": "",
+  "outlineContent": [
+   {
+    "title": "课程介绍与数字人概述",
+    "startTime": "00:00:08,280",
+    "endTime": "00:10:02,770",
+    "startIndex": 1,
+    "endIndex": 42,
+    "summary": [],
+    "keyword": []
+   },
+   {
+    "title": "数字人技术与分类",
+    "startTime": "00:10:03,940",
+    "endTime": "00:16:04,325",
+    "startIndex": 43,
+    "endIndex": 78,
+    "summary": [
+     "数字人分为2D和3D两种类型，3D需要建模和动作捕捉，2D则更简单。",
+     "数字人的关键技术包括模型训练、语音合成和实时交互等。"
+    ],
+    "keyword": [
+     "2D数字人",
+     "3D数字人",
+     "模型训练"
+    ]
+   },
+   {
+    "title": "数字人应用场景",
+    "startTime": "00:16:04,650",
+    "endTime": "00:36:08,745",
+    "startIndex": 79,
+    "endIndex": 150,
+    "summary": [],
+    "keyword": [
+     "教学智课",
+     "短视频创作",
+     "乡村振兴"
+    ]
+   },
+   {
+    "title": "平台功能与实操",
+    "startTime": "00:36:09,420",
+    "endTime": "01:25:44,150",
+    "startIndex": 151,
+    "endIndex": 223,
+    "summary": [
+     "平台提供AI剪辑、智能字幕、知识库等功能，方便用户快速制作数字人视频。",
+     "用户可以通过上传PPT、输入文本或录音来驱动数字人生成视频。"
+    ],
+    "keyword": [
+     "AI剪辑",
+     "智能字幕",
+     "实操演示"
+    ]
+   }
+  ]
+ },
+ "question": null
+}

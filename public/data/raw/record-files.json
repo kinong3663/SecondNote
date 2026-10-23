@@ -1,0 +1,104 @@
+[
+ {
+  "channelId": 4711207,
+  "fileId": "74f7a46b633d1c96b9081ea60d122272",
+  "url": "https://oss-live-2.videocc.net/record/record/recordf/bfcb278e7a171083550829933f0/2025-11-11-14-08-31_2025-11-11-15-30-10_s.mp4",
+  "startTime": "20251111140830",
+  "endTime": "20251111153010",
+  "fileSize": 638609998,
+  "duration": 4900,
+  "bitrate": 0,
+  "resolution": "720x720",
+  "channelSessionId": "hcvi46hzlg",
+  "fileName": "AI数字人共创社学习空间",
+  "daysLeft": -1,
+  "originSessionId": "hcvi46hzlg",
+  "origin": "auto",
+  "recordFileType": "complete",
+  "subtitleList": [
+   {
+    "id": 25667,
+    "name": null,
+    "srtUrl": "https://liveimages.videocc.net/srt/bfcb278e7a/4711207/74f7a46b633d1c96b9081ea60d122272/Chinese.srt",
+    "language": "Chinese",
+    "source": "vodSmartSrt",
+    "isOriginal": "Y",
+    "status": "finish"
+   }
+  ]
+ },
+ {
+  "channelId": 4711207,
+  "fileId": "01a2cf3cc5f8389d554995377b34bbac",
+  "url": "https://oss-live-2.videocc.net/record/record/recordf/bfcb278e7a171083550829933f0/2025-11-04-19-04-48_2025-11-04-21-59-31_s.mp4",
+  "startTime": "20251104190447",
+  "endTime": "20251104215931",
+  "fileSize": 1399551623,
+  "duration": 10484,
+  "bitrate": 0,
+  "resolution": "720x720",
+  "channelSessionId": "hco0fx83aa",
+  "fileName": "AI数字人共创社学习空间",
+  "daysLeft": -1,
+  "originSessionId": "hco0fx83aa",
+  "origin": "auto",
+  "recordFileType": "complete",
+  "subtitleList": [
+   {
+    "id": 25248,
+    "name": null,
+    "srtUrl": "https://liveimages.videocc.net/srt/bfcb278e7a/4711207/01a2cf3cc5f8389d554995377b34bbac/Chinese.srt",
+    "language": "Chinese",
+    "source": "vodSmartSrt",
+    "isOriginal": "Y",
+    "status": "finish"
+   }
+  ]
+ },
+ {
+  "channelId": 4711207,
+  "fileId": "321fe822719e795e809ee60a901c7aad",
+  "url": "https://oss-live-2.videocc.net/record/record/recordf/bfcb278e7a171083550829933f0/2025-10-30-13-55-15_2025-10-30-15-21-05_s.mp4",
+  "startTime": "20251030135515",
+  "endTime": "20251030152105",
+  "fileSize": 412970567,
+  "duration": 5150,
+  "bitrate": 0,
+  "resolution": "720x720",
+  "channelSessionId": "hci9g9krxd",
+  "fileName": "AI数字人共创社学习空间",
+  "daysLeft": -1,
+  "originSessionId": "hci9g9krxd",
+  "origin": "auto",
+  "recordFileType": "complete",
+  "subtitleList": [
+   {
+    "id": 24920,
+    "name": null,
+    "srtUrl": "https://liveimages.videocc.net/srt/bfcb278e7a/4711207/321fe822719e795e809ee60a901c7aad/Chinese.srt",
+    "language": "Chinese",
+    "source": "vodSmartSrt",
+    "isOriginal": "Y",
+    "status": "finish"
+   }
+  ]
+ },
+ {
+  "channelId": 4711207,
+  "fileId": "d4bf6222a518f61c0ccb5d89129beff1",
+  "url": "https://oss-live-2.videocc.net/record/record/recordf/bfcb278e7a171083550829933f0/2025-10-28-14-05-02_2025-10-28-16-30-58_s.mp4",
+  "startTime": "20251028140501",
+  "endTime": "20251028163058",
+  "fileSize": 1128512848,
+  "duration": 8757,
+  "bitrate": 0,
+  "resolution": "9x9",
+  "channelSessionId": "hcg2c6sp48",
+  "fileName": "AI数字人共创社学习空间",
+  "daysLeft": -1,
+  "originSessionId": "hcg2c6sp48",
+  "origin": "auto",
+  "recordFileType": "complete",
+  "subtitleList": null
+ }
+]

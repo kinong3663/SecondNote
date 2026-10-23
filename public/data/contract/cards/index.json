@@ -1,0 +1,48 @@
+{
+ "meta": {
+  "generatedAt": "2026-10-23T08:56:28.968Z",
+  "source": "sim",
+  "sessions": 3
+ },
+ "sessions": [
+  {
+   "sessionId": "hcvi46hzlg",
+   "title": "AI数字人共创社学习空间",
+   "cards": 73,
+   "viewers": 27,
+   "byType": {
+    "key": 21,
+    "case": 3,
+    "step": 25,
+    "question": 20,
+    "fix": 4
+   }
+  },
+  {
+   "sessionId": "hco0fx83aa",
+   "title": "AI数字人共创社学习空间",
+   "cards": 71,
+   "viewers": 20,
+   "byType": {
+    "case": 5,
+    "question": 31,
+    "step": 19,
+    "key": 12,
+    "fix": 4
+   }
+  },
+  {
+   "sessionId": "hci9g9krxd",
+   "title": "AI数字人共创社学习空间",
+   "cards": 27,
+   "viewers": 10,
+   "byType": {
+    "question": 11,
+    "case": 2,
+    "step": 5,
+    "key": 7,
+    "fix": 2
+   }
+  }
+ ]
+}

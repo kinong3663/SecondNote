@@ -1,0 +1,59 @@
+[
+ {
+  "channelId": 4711207,
+  "playBackEnabled": "Y",
+  "origin": "playback",
+  "type": "list",
+  "videoList": [
+   {
+    "videoId": "efa074c685",
+    "videoPoolId": "bfcb278e7a04201b6396b6496a71096c",
+    "duration": "01:23:44",
+    "name": "5月15日推广组线上培训",
+    "fileId": null,
+    "watchUrl": "//live.polyv.cn/watch/4711207?vid=efa074c685"
+   },
+   {
+    "videoId": "3edee416dd",
+    "videoPoolId": "bfcb278e7ae56c0931e0a45bfbc6b633",
+    "duration": "01:25:01",
+    "name": "0325采集理论课",
+    "fileId": null,
+    "watchUrl": "//live.polyv.cn/watch/4711207?vid=3edee416dd"
+   },
+   {
+    "videoId": "866bf851c5",
+    "videoPoolId": "bfcb278e7aef8d58e85ef7b4640f6fec",
+    "duration": "01:36:39",
+    "name": "AI数字人共创社",
+    "fileId": null,
+    "watchUrl": "//live.polyv.cn/watch/4711207?vid=866bf851c5"
+   },
+   {
+    "videoId": "71ca1844f7",
+    "videoPoolId": "bfcb278e7a7a27433dd2940324668007",
+    "duration": "00:33:38",
+    "name": "AI数字人共创社学习空间",
+    "fileId": null,
+    "watchUrl": "//live.polyv.cn/watch/4711207?vid=71ca1844f7"
+   },
+   {
+    "videoId": "63a1f549c8",
+    "videoPoolId": "bfcb278e7a1b2cedecedbebe5aeb4eab",
+    "duration": "01:26:39",
+    "name": "AI数字人共创社学习空间",
+    "fileId": null,
+    "watchUrl": "//live.polyv.cn/watch/4711207?vid=63a1f549c8"
+   },
+   {
+    "videoId": "d0824e2f7e",
+    "videoPoolId": "bfcb278e7a9796c1ce4df0b700e8f497",
+    "duration": "01:29:47",
+    "name": "AI数字人共创社学习空间",
+    "fileId": null,
+    "watchUrl": "//live.polyv.cn/watch/4711207?vid=d0824e2f7e"
+   }
+  ],
+  "globalSettingEnabled": "N"
+ }
+]

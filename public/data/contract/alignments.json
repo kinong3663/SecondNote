@@ -1,0 +1,56 @@
+{
+ "meta": {
+  "generatedAt": "2026-10-23T08:04:23.901Z",
+  "note": "直播第 N 秒 = 录制文件第 (N - offsetSec) 秒"
+ },
+ "alignments": {
+  "hcvi46hzlg": {
+   "sessionId": "hcvi46hzlg",
+   "fileId": "74f7a46b633d1c96b9081ea60d122272",
+   "evidence": "record-file.list: channelSessionId + startTime + duration",
+   "offsetSec": -2,
+   "durationDeltaSec": 1,
+   "grade": "verified",
+   "watchUrl": "https://live.polyv.cn/watch/4711207?vid=74f7a46b633d1c96b9081ea60d122272&playbackType=material",
+   "hasSubtitle": true,
+   "hasOutline": true,
+   "note": "录制起点比场次起点晚 2s，时长差 1s → 时间轴可直接换算"
+  },
+  "hco0fx83aa": {
+   "sessionId": "hco0fx83aa",
+   "fileId": "01a2cf3cc5f8389d554995377b34bbac",
+   "evidence": "record-file.list: channelSessionId + startTime + duration",
+   "offsetSec": -2,
+   "durationDeltaSec": 0,
+   "grade": "verified",
+   "watchUrl": "https://live.polyv.cn/watch/4711207?vid=01a2cf3cc5f8389d554995377b34bbac&playbackType=material",
+   "hasSubtitle": true,
+   "hasOutline": true,
+   "note": "录制起点比场次起点晚 2s，时长差 0s → 时间轴可直接换算"
+  },
+  "hci9g9krxd": {
+   "sessionId": "hci9g9krxd",
+   "fileId": "321fe822719e795e809ee60a901c7aad",
+   "evidence": "record-file.list: channelSessionId + startTime + duration",
+   "offsetSec": 0,
+   "durationDeltaSec": -2,
+   "grade": "verified",
+   "watchUrl": "https://live.polyv.cn/watch/4711207?vid=321fe822719e795e809ee60a901c7aad&playbackType=material",
+   "hasSubtitle": true,
+   "hasOutline": true,
+   "note": "录制起点比场次起点晚 0s，时长差 2s → 时间轴可直接换算"
+  },
+  "hcg2c6sp48": {
+   "sessionId": "hcg2c6sp48",
+   "fileId": "d4bf6222a518f61c0ccb5d89129beff1",
+   "evidence": "record-file.list: channelSessionId + startTime + duration",
+   "offsetSec": -2,
+   "durationDeltaSec": 0,
+   "grade": "verified",
+   "watchUrl": "https://live.polyv.cn/watch/4711207?vid=d4bf6222a518f61c0ccb5d89129beff1&playbackType=material",
+   "hasSubtitle": false,
+   "hasOutline": false,
+   "note": "录制起点比场次起点晚 2s，时长差 0s → 时间轴可直接换算"
+  }
+ }
+}

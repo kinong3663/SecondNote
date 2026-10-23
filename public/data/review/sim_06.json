@@ -1,0 +1,235 @@
+{
+  "meta": {
+    "sessionId": "sim_06",
+    "title": "Q4 产品内训 · 第 6 讲",
+    "scenario": "bad",
+    "date": "2026-11-10",
+    "durationSec": 4020,
+    "source": "sim",
+    "generatedAt": "2026-10-23T03:02:28.355Z",
+    "engine": "rule+baseline v1"
+  },
+  "kpi": {
+    "durationMin": 67,
+    "peak": 38,
+    "avgOnline": 29,
+    "start": 32,
+    "end": 13,
+    "endRetention": 0.406,
+    "chatTotal": 33,
+    "chatPerMin": 0.49,
+    "sentiment": 0.15,
+    "interacts": 2,
+    "stalls": 1
+  },
+  "conclusions": [
+    "最好的一段是「开场与目标」（0'00\"-7'00\"）：弹幕 18 条、点赞 30 次，段内人数变化 6.3%。",
+    "最差的一段是「服务与交付」里的 57'00\"-60'00\"：22→16 人（-27.3%），归因是「单口讲解过长（弹幕归零）」。",
+    "最该改的一件事：下一场在此前插入一句提问，并把段落压到 3 分钟内。"
+  ],
+  "drops": [
+    {
+      "startSec": 3420,
+      "endSec": 3600,
+      "drop": -0.2727272727272727,
+      "from": 22,
+      "to": 16,
+      "abnormal": -0.2727272727272727,
+      "seg": {
+        "id": "t6",
+        "startSec": 3420,
+        "endSec": 3780,
+        "topic": "服务与交付",
+        "hasHook": false
+      },
+      "cause": "单口讲解过长（弹幕归零）",
+      "rule": "窗口内 Δonline 异常下跌 且 弹幕 = 0",
+      "fix": "这段 3 分钟弹幕为零。下一场在此前插入一句提问，并把段落压到 3 分钟内。可直接用：「服务与交付这一段，你们现在团队里是怎么做的？打在公屏上。」",
+      "impact": "掉幅通常可减半",
+      "confidence": "high"
+    },
+    {
+      "startSec": 3000,
+      "endSec": 3180,
+      "drop": -0.19230769230769232,
+      "from": 26,
+      "to": 21,
+      "abnormal": -0.19230769230769232,
+      "seg": {
+        "id": "t5",
+        "startSec": 2880,
+        "endSec": 3420,
+        "topic": "客户案例",
+        "hasHook": false
+      },
+      "cause": "单口讲解过长（弹幕归零）",
+      "rule": "窗口内 Δonline 异常下跌 且 弹幕 = 0",
+      "fix": "这段 3 分钟弹幕为零。下一场在此前插入一句提问，并把段落压到 3 分钟内。可直接用：「客户案例这一段，你们现在团队里是怎么做的？打在公屏上。」",
+      "impact": "掉幅通常可减半",
+      "confidence": "high"
+    },
+    {
+      "startSec": 3810,
+      "endSec": 3990,
+      "drop": -0.1875,
+      "from": 16,
+      "to": 13,
+      "abnormal": -0.1875,
+      "seg": {
+        "id": "t7",
+        "startSec": 3780,
+        "endSec": 4020,
+        "topic": "答疑与收尾",
+        "hasHook": true
+      },
+      "cause": "过渡生硬（话题切换处掉人）",
+      "rule": "掉人窗口起点距话题切换 ≤ 60s，且弹幕非零",
+      "fix": "从「服务与交付」切到「答疑与收尾」时没有预告。加一句转场：「接下来这段讲 答疑与收尾，如果你只关心结论，听完这句就可以走。」",
+      "impact": "曲线平滑，减少\"不知道后面讲什么\"的离开",
+      "confidence": "medium"
+    }
+  ],
+  "topics": [
+    {
+      "id": "t1",
+      "startSec": 0,
+      "endSec": 420,
+      "topic": "开场与目标",
+      "hasHook": true,
+      "drop": 0.0625,
+      "avg": 33.13333333333333,
+      "chat": 18,
+      "likes": 30,
+      "minutes": 7
+    },
+    {
+      "id": "t2",
+      "startSec": 420,
+      "endSec": 1440,
+      "topic": "行业痛点",
+      "hasHook": false,
+      "drop": 0.08823529411764706,
+      "avg": 34.2,
+      "chat": 2,
+      "likes": 58,
+      "minutes": 17
+    },
+    {
+      "id": "t3",
+      "startSec": 1440,
+      "endSec": 2160,
+      "topic": "产品能力总览",
+      "hasHook": false,
+      "drop": -0.05405405405405406,
+      "avg": 35.12,
+      "chat": 1,
+      "likes": 18,
+      "minutes": 12
+    },
+    {
+      "id": "t4",
+      "startSec": 2160,
+      "endSec": 2880,
+      "topic": "现场演示",
+      "hasHook": false,
+      "drop": -0.2,
+      "avg": 29.68,
+      "chat": 0,
+      "likes": 32,
+      "minutes": 12
+    },
+    {
+      "id": "t5",
+      "startSec": 2880,
+      "endSec": 3420,
+      "topic": "客户案例",
+      "hasHook": false,
+      "drop": -0.21428571428571427,
+      "avg": 23.68421052631579,
+      "chat": 0,
+      "likes": 19,
+      "minutes": 9
+    },
+    {
+      "id": "t6",
+      "startSec": 3420,
+      "endSec": 3780,
+      "topic": "服务与交付",
+      "hasHook": false,
+      "drop": -0.2727272727272727,
+      "avg": 17.923076923076923,
+      "chat": 0,
+      "likes": 25,
+      "minutes": 6
+    },
+    {
+      "id": "t7",
+      "startSec": 3780,
+      "endSec": 4020,
+      "topic": "答疑与收尾",
+      "hasHook": true,
+      "drop": -0.1875,
+      "avg": 14.75,
+      "chat": 12,
+      "likes": 12,
+      "minutes": 4
+    }
+  ],
+  "highlights": [
+    {
+      "at": "63'00\"",
+      "count": 6,
+      "topic": "答疑与收尾"
+    },
+    {
+      "at": "0'00\"",
+      "count": 5,
+      "topic": "开场与目标"
+    },
+    {
+      "at": "1'00\"",
+      "count": 4,
+      "topic": "开场与目标"
+    }
+  ],
+  "issues": [
+    {
+      "level": "S",
+      "at": "57'00\"-60'00\"",
+      "topic": "服务与交付",
+      "desc": "22→16 人（-27.3%），单口讲解过长（弹幕归零）",
+      "index": 1
+    },
+    {
+      "level": "A",
+      "at": "50'00\"-53'00\"",
+      "topic": "客户案例",
+      "desc": "26→21 人（-19.2%），单口讲解过长（弹幕归零）",
+      "index": 2
+    },
+    {
+      "level": "A",
+      "at": "63'30\"-66'30\"",
+      "topic": "答疑与收尾",
+      "desc": "16→13 人（-18.8%），过渡生硬（话题切换处掉人）",
+      "index": 3
+    }
+  ],
+  "completeness": {
+    "tier": "A",
+    "real": [
+      "场次与时长（channel/session/list）",
+      "回放与播放地址（channel/playback/list）"
+    ],
+    "sdk": [
+      "弹幕（模拟 SDK 事件流）",
+      "点赞",
+      "答题卡/签到/公告/抽奖"
+    ],
+    "sim": [
+      "分钟级在线人数曲线",
+      "讲师话题分段"
+    ],
+    "note": "本次为模拟场次（source: sim），接入真实场次后按同一引擎重算；缺失维度会在报告顶部标注。"
+  }
+}

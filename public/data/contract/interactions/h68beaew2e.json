@@ -1,0 +1,6 @@
+{
+ "sessionId": "h68beaew2e",
+ "source": "real",
+ "note": "本账号实测互动记录为 0 条（未发起过抽奖/签到/答题等）。格式见 interactions/_schema.json，后续模拟数据按同格式注入并标 source=sim。",
+ "events": []
+}

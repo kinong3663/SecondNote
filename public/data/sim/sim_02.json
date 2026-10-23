@@ -1,0 +1,2153 @@
+{
+ "sessionId": "sim_02",
+ "channelId": "4711207",
+ "title": "客户成功工作坊 · 第 2 讲",
+ "scenario": "mediocre",
+ "startTime": 1793944800000,
+ "endTime": 1793948040000,
+ "durationSec": 3240,
+ "source": "sim",
+ "segments": [
+  {
+   "id": "t1",
+   "startSec": 0,
+   "endSec": 420,
+   "topic": "开场与目标",
+   "hasHook": true
+  },
+  {
+   "id": "t2",
+   "startSec": 420,
+   "endSec": 900,
+   "topic": "行业痛点",
+   "hasHook": true
+  },
+  {
+   "id": "t3",
+   "startSec": 900,
+   "endSec": 1500,
+   "topic": "产品能力总览",
+   "hasHook": true
+  },
+  {
+   "id": "t4",
+   "startSec": 1500,
+   "endSec": 2160,
+   "topic": "现场演示",
+   "hasHook": false
+  },
+  {
+   "id": "t5",
+   "startSec": 2160,
+   "endSec": 2460,
+   "topic": "客户案例",
+   "hasHook": true
+  },
+  {
+   "id": "t6",
+   "startSec": 2460,
+   "endSec": 2760,
+   "topic": "价格与套餐",
+   "hasHook": true
+  },
+  {
+   "id": "t7",
+   "startSec": 2760,
+   "endSec": 3000,
+   "topic": "服务与交付",
+   "hasHook": false
+  },
+  {
+   "id": "t8",
+   "startSec": 3000,
+   "endSec": 3240,
+   "topic": "答疑与收尾",
+   "hasHook": true
+  }
+ ],
+ "engineeredDrops": [
+  {
+   "startSec": 1632,
+   "endSec": 2028,
+   "topic": "现场演示"
+  }
+ ],
+ "events": [
+  {
+   "t": 0,
+   "type": "viewer",
+   "viewers": 64
+  },
+  {
+   "t": 0,
+   "type": "like",
+   "count": 8
+  },
+  {
+   "t": 1,
+   "type": "chat",
+   "user": "观众38",
+   "text": "有资料吗",
+   "sentiment": 0.05
+  },
+  {
+   "t": 1,
+   "type": "chat",
+   "user": "观众20",
+   "text": "求课件",
+   "sentiment": 0.25
+  },
+  {
+   "t": 3,
+   "type": "chat",
+   "user": "观众11",
+   "text": "2",
+   "sentiment": 0.2
+  },
+  {
+   "t": 5,
+   "type": "interact",
+   "kind": "questionnaire",
+   "payload": {
+    "text": "这一页我停 30 秒，有问题直接打在公屏",
+    "joined": 28
+   }
+  },
+  {
+   "t": 16,
+   "type": "chat",
+   "user": "观众36",
+   "text": "已签到",
+   "sentiment": -0.2
+  },
+  {
+   "t": 29,
+   "type": "chat",
+   "user": "观众30",
+   "text": "老师好",
+   "sentiment": 0.05
+  },
+  {
+   "t": 30,
+   "type": "viewer",
+   "viewers": 64
+  },
+  {
+   "t": 34,
+   "type": "chat",
+   "user": "观众20",
+   "text": "哈哈",
+   "sentiment": -0.05
+  },
+  {
+   "t": 35,
+   "type": "chat",
+   "user": "观众4",
+   "text": "价格怎么算",
+   "sentiment": -0.06
+  },
+  {
+   "t": 40,
+   "type": "chat",
+   "user": "观众4",
+   "text": "有资料吗",
+   "sentiment": -0.23
+  },
+  {
+   "t": 43,
+   "type": "chat",
+   "user": "观众23",
+   "text": "价格怎么算",
+   "sentiment": 0.01
+  },
+  {
+   "t": 49,
+   "type": "chat",
+   "user": "观众12",
+   "text": "求课件",
+   "sentiment": 0.43
+  },
+  {
+   "t": 60,
+   "type": "viewer",
+   "viewers": 65
+  },
+  {
+   "t": 60,
+   "type": "chat",
+   "user": "观众12",
+   "text": "有资料吗",
+   "sentiment": 0
+  },
+  {
+   "t": 65,
+   "type": "chat",
+   "user": "观众13",
+   "text": "求课件",
+   "sentiment": -0.07
+  },
+  {
+   "t": 69,
+   "type": "chat",
+   "user": "观众31",
+   "text": "哈哈",
+   "sentiment": 0.52
+  },
+  {
+   "t": 71,
+   "type": "chat",
+   "user": "观众38",
+   "text": "这个坑我们踩过",
+   "sentiment": 0.34
+  },
+  {
+   "t": 89,
+   "type": "chat",
+   "user": "观众31",
+   "text": "2",
+   "sentiment": -0.03
+  },
+  {
+   "t": 90,
+   "type": "viewer",
+   "viewers": 65
+  },
+  {
+   "t": 92,
+   "type": "chat",
+   "user": "观众22",
+   "text": "已签到",
+   "sentiment": 0.22
+  },
+  {
+   "t": 120,
+   "type": "viewer",
+   "viewers": 66
+  },
+  {
+   "t": 137,
+   "type": "chat",
+   "user": "观众38",
+   "text": "哈哈",
+   "sentiment": 0.41
+  },
+  {
+   "t": 150,
+   "type": "viewer",
+   "viewers": 66
+  },
+  {
+   "t": 150,
+   "type": "like",
+   "count": 2
+  },
+  {
+   "t": 167,
+   "type": "chat",
+   "user": "观众21",
+   "text": "求课件",
+   "sentiment": 0.42
+  },
+  {
+   "t": 175,
+   "type": "chat",
+   "user": "观众11",
+   "text": "有资料吗",
+   "sentiment": 0.18
+  },
+  {
+   "t": 180,
+   "type": "viewer",
+   "viewers": 67
+  },
+  {
+   "t": 187,
+   "type": "chat",
+   "user": "观众6",
+   "text": "讲得好",
+   "sentiment": 0.43
+  },
+  {
+   "t": 196,
+   "type": "chat",
+   "user": "观众22",
+   "text": "价格怎么算",
+   "sentiment": -0.1
+  },
+  {
+   "t": 210,
+   "type": "viewer",
+   "viewers": 67
+  },
+  {
+   "t": 216,
+   "type": "chat",
+   "user": "观众20",
+   "text": "哈哈",
+   "sentiment": 0.4
+  },
+  {
+   "t": 235,
+   "type": "chat",
+   "user": "观众19",
+   "text": "有资料吗",
+   "sentiment": 0.23
+  },
+  {
+   "t": 240,
+   "type": "viewer",
+   "viewers": 67
+  },
+  {
+   "t": 252,
+   "type": "chat",
+   "user": "观众36",
+   "text": "已签到",
+   "sentiment": -0.03
+  },
+  {
+   "t": 270,
+   "type": "viewer",
+   "viewers": 68
+  },
+  {
+   "t": 270,
+   "type": "chat",
+   "user": "观众21",
+   "text": "讲得好",
+   "sentiment": 0.46
+  },
+  {
+   "t": 272,
+   "type": "chat",
+   "user": "观众32",
+   "text": "讲得好",
+   "sentiment": 0.16
+  },
+  {
+   "t": 300,
+   "type": "viewer",
+   "viewers": 68
+  },
+  {
+   "t": 300,
+   "type": "like",
+   "count": 11
+  },
+  {
+   "t": 324,
+   "type": "chat",
+   "user": "观众21",
+   "text": "老师好",
+   "sentiment": -0.22
+  },
+  {
+   "t": 326,
+   "type": "chat",
+   "user": "观众13",
+   "text": "有资料吗",
+   "sentiment": 0.19
+  },
+  {
+   "t": 330,
+   "type": "viewer",
+   "viewers": 68
+  },
+  {
+   "t": 336,
+   "type": "chat",
+   "user": "观众28",
+   "text": "价格怎么算",
+   "sentiment": 0.06
+  },
+  {
+   "t": 360,
+   "type": "viewer",
+   "viewers": 68
+  },
+  {
+   "t": 382,
+   "type": "chat",
+   "user": "观众20",
+   "text": "价格怎么算",
+   "sentiment": 0.09
+  },
+  {
+   "t": 390,
+   "type": "viewer",
+   "viewers": 69
+  },
+  {
+   "t": 397,
+   "type": "chat",
+   "user": "观众5",
+   "text": "讲得好",
+   "sentiment": -0.12
+  },
+  {
+   "t": 411,
+   "type": "chat",
+   "user": "观众4",
+   "text": "2",
+   "sentiment": 0.11
+  },
+  {
+   "t": 420,
+   "type": "viewer",
+   "viewers": 70
+  },
+  {
+   "t": 420,
+   "type": "chat",
+   "user": "观众26",
+   "text": "哈哈",
+   "sentiment": 0.26
+  },
+  {
+   "t": 421,
+   "type": "chat",
+   "user": "观众8",
+   "text": "这个功能怎么开",
+   "sentiment": 0.13
+  },
+  {
+   "t": 425,
+   "type": "interact",
+   "kind": "checkin",
+   "payload": {
+    "text": "这一页我停 30 秒，有问题直接打在公屏",
+    "joined": 43
+   }
+  },
+  {
+   "t": 426,
+   "type": "chat",
+   "user": "观众17",
+   "text": "这个坑我们踩过",
+   "sentiment": 0.51
+  },
+  {
+   "t": 437,
+   "type": "chat",
+   "user": "观众7",
+   "text": "有资料吗",
+   "sentiment": 0.56
+  },
+  {
+   "t": 446,
+   "type": "chat",
+   "user": "观众26",
+   "text": "能回放吗",
+   "sentiment": -0.03
+  },
+  {
+   "t": 450,
+   "type": "viewer",
+   "viewers": 70
+  },
+  {
+   "t": 450,
+   "type": "like",
+   "count": 10
+  },
+  {
+   "t": 452,
+   "type": "chat",
+   "user": "观众4",
+   "text": "已签到",
+   "sentiment": -0.1
+  },
+  {
+   "t": 457,
+   "type": "chat",
+   "user": "观众2",
+   "text": "2",
+   "sentiment": 0.28
+  },
+  {
+   "t": 463,
+   "type": "chat",
+   "user": "观众14",
+   "text": "这个坑我们踩过",
+   "sentiment": -0.11
+  },
+  {
+   "t": 472,
+   "type": "chat",
+   "user": "观众14",
+   "text": "价格怎么算",
+   "sentiment": -0.07
+  },
+  {
+   "t": 476,
+   "type": "chat",
+   "user": "观众4",
+   "text": "已签到",
+   "sentiment": 0.55
+  },
+  {
+   "t": 480,
+   "type": "viewer",
+   "viewers": 70
+  },
+  {
+   "t": 494,
+   "type": "chat",
+   "user": "观众32",
+   "text": "讲得好",
+   "sentiment": 0.34
+  },
+  {
+   "t": 497,
+   "type": "chat",
+   "user": "观众29",
+   "text": "懂了",
+   "sentiment": 0.42
+  },
+  {
+   "t": 499,
+   "type": "chat",
+   "user": "观众17",
+   "text": "2",
+   "sentiment": 0.19
+  },
+  {
+   "t": 501,
+   "type": "chat",
+   "user": "观众5",
+   "text": "老师能再讲一遍吗",
+   "sentiment": 0.42
+  },
+  {
+   "t": 501,
+   "type": "chat",
+   "user": "观众25",
+   "text": "哈哈",
+   "sentiment": 0.47
+  },
+  {
+   "t": 508,
+   "type": "chat",
+   "user": "观众1",
+   "text": "111",
+   "sentiment": 0.1
+  },
+  {
+   "t": 510,
+   "type": "viewer",
+   "viewers": 70
+  },
+  {
+   "t": 526,
+   "type": "chat",
+   "user": "观众26",
+   "text": "讲得好",
+   "sentiment": 0.25
+  },
+  {
+   "t": 540,
+   "type": "viewer",
+   "viewers": 71
+  },
+  {
+   "t": 558,
+   "type": "chat",
+   "user": "观众31",
+   "text": "我们公司也是这样",
+   "sentiment": 0.36
+  },
+  {
+   "t": 570,
+   "type": "viewer",
+   "viewers": 71
+  },
+  {
+   "t": 586,
+   "type": "chat",
+   "user": "观众8",
+   "text": "价格怎么算",
+   "sentiment": -0.06
+  },
+  {
+   "t": 600,
+   "type": "viewer",
+   "viewers": 72
+  },
+  {
+   "t": 603,
+   "type": "chat",
+   "user": "观众8",
+   "text": "这个功能怎么开",
+   "sentiment": -0.04
+  },
+  {
+   "t": 618,
+   "type": "chat",
+   "user": "观众5",
+   "text": "价格怎么算",
+   "sentiment": 0.42
+  },
+  {
+   "t": 630,
+   "type": "viewer",
+   "viewers": 72
+  },
+  {
+   "t": 637,
+   "type": "chat",
+   "user": "观众11",
+   "text": "已签到",
+   "sentiment": -0.17
+  },
+  {
+   "t": 660,
+   "type": "viewer",
+   "viewers": 73
+  },
+  {
+   "t": 661,
+   "type": "chat",
+   "user": "观众7",
+   "text": "这个坑我们踩过",
+   "sentiment": 0.08
+  },
+  {
+   "t": 674,
+   "type": "chat",
+   "user": "观众15",
+   "text": "老师能再讲一遍吗",
+   "sentiment": 0.54
+  },
+  {
+   "t": 690,
+   "type": "viewer",
+   "viewers": 73
+  },
+  {
+   "t": 712,
+   "type": "chat",
+   "user": "观众4",
+   "text": "这个功能怎么开",
+   "sentiment": 0.46
+  },
+  {
+   "t": 720,
+   "type": "viewer",
+   "viewers": 74
+  },
+  {
+   "t": 720,
+   "type": "like",
+   "count": 13
+  },
+  {
+   "t": 745,
+   "type": "chat",
+   "user": "观众15",
+   "text": "能回放吗",
+   "sentiment": 0.53
+  },
+  {
+   "t": 750,
+   "type": "viewer",
+   "viewers": 74
+  },
+  {
+   "t": 750,
+   "type": "chat",
+   "user": "观众40",
+   "text": "老师能再讲一遍吗",
+   "sentiment": 0.37
+  },
+  {
+   "t": 775,
+   "type": "chat",
+   "user": "观众7",
+   "text": "求课件",
+   "sentiment": 0.36
+  },
+  {
+   "t": 780,
+   "type": "viewer",
+   "viewers": 74
+  },
+  {
+   "t": 788,
+   "type": "chat",
+   "user": "观众11",
+   "text": "这个功能怎么开",
+   "sentiment": 0.29
+  },
+  {
+   "t": 799,
+   "type": "chat",
+   "user": "观众29",
+   "text": "有资料吗",
+   "sentiment": 0.21
+  },
+  {
+   "t": 810,
+   "type": "viewer",
+   "viewers": 75
+  },
+  {
+   "t": 812,
+   "type": "chat",
+   "user": "观众16",
+   "text": "老师能再讲一遍吗",
+   "sentiment": -0.2
+  },
+  {
+   "t": 840,
+   "type": "viewer",
+   "viewers": 75
+  },
+  {
+   "t": 840,
+   "type": "like",
+   "count": 6
+  },
+  {
+   "t": 855,
+   "type": "chat",
+   "user": "观众40",
+   "text": "价格怎么算",
+   "sentiment": -0.23
+  },
+  {
+   "t": 870,
+   "type": "viewer",
+   "viewers": 76
+  },
+  {
+   "t": 870,
+   "type": "like",
+   "count": 7
+  },
+  {
+   "t": 877,
+   "type": "chat",
+   "user": "观众38",
+   "text": "我们公司也是这样",
+   "sentiment": 0.31
+  },
+  {
+   "t": 900,
+   "type": "viewer",
+   "viewers": 76
+  },
+  {
+   "t": 901,
+   "type": "chat",
+   "user": "观众22",
+   "text": "这个数据哪来的",
+   "sentiment": -0.07
+  },
+  {
+   "t": 905,
+   "type": "interact",
+   "kind": "checkin",
+   "payload": {
+    "text": "有没有踩过这个坑的？扣个 1 我看到",
+    "joined": 36
+   }
+  },
+  {
+   "t": 911,
+   "type": "chat",
+   "user": "观众35",
+   "text": "111",
+   "sentiment": 0.2
+  },
+  {
+   "t": 914,
+   "type": "chat",
+   "user": "观众27",
+   "text": "2",
+   "sentiment": 0.52
+  },
+  {
+   "t": 917,
+   "type": "chat",
+   "user": "观众25",
+   "text": "这个功能怎么开",
+   "sentiment": 0.27
+  },
+  {
+   "t": 921,
+   "type": "chat",
+   "user": "观众31",
+   "text": "讲得好",
+   "sentiment": 0.31
+  },
+  {
+   "t": 922,
+   "type": "chat",
+   "user": "观众40",
+   "text": "求课件",
+   "sentiment": 0.36
+  },
+  {
+   "t": 930,
+   "type": "viewer",
+   "viewers": 76
+  },
+  {
+   "t": 930,
+   "type": "chat",
+   "user": "观众4",
+   "text": "讲得好",
+   "sentiment": 0.12
+  },
+  {
+   "t": 938,
+   "type": "chat",
+   "user": "观众31",
+   "text": "哈哈",
+   "sentiment": 0.21
+  },
+  {
+   "t": 946,
+   "type": "chat",
+   "user": "观众21",
+   "text": "这个数据哪来的",
+   "sentiment": 0.24
+  },
+  {
+   "t": 949,
+   "type": "chat",
+   "user": "观众6",
+   "text": "懂了",
+   "sentiment": -0.07
+  },
+  {
+   "t": 953,
+   "type": "chat",
+   "user": "观众3",
+   "text": "老师好",
+   "sentiment": -0.06
+  },
+  {
+   "t": 958,
+   "type": "chat",
+   "user": "观众19",
+   "text": "讲得好",
+   "sentiment": -0.19
+  },
+  {
+   "t": 960,
+   "type": "viewer",
+   "viewers": 77
+  },
+  {
+   "t": 970,
+   "type": "chat",
+   "user": "观众5",
+   "text": "懂了",
+   "sentiment": -0.15
+  },
+  {
+   "t": 976,
+   "type": "chat",
+   "user": "观众9",
+   "text": "讲得好",
+   "sentiment": -0.05
+  },
+  {
+   "t": 981,
+   "type": "chat",
+   "user": "观众40",
+   "text": "这个功能怎么开",
+   "sentiment": 0.32
+  },
+  {
+   "t": 984,
+   "type": "chat",
+   "user": "观众8",
+   "text": "老师好",
+   "sentiment": -0.19
+  },
+  {
+   "t": 984,
+   "type": "chat",
+   "user": "观众7",
+   "text": "已签到",
+   "sentiment": 0.49
+  },
+  {
+   "t": 990,
+   "type": "viewer",
+   "viewers": 77
+  },
+  {
+   "t": 1015,
+   "type": "chat",
+   "user": "观众30",
+   "text": "讲得好",
+   "sentiment": 0.3
+  },
+  {
+   "t": 1020,
+   "type": "viewer",
+   "viewers": 77
+  },
+  {
+   "t": 1033,
+   "type": "chat",
+   "user": "观众39",
+   "text": "哈哈",
+   "sentiment": 0.51
+  },
+  {
+   "t": 1050,
+   "type": "viewer",
+   "viewers": 78
+  },
+  {
+   "t": 1068,
+   "type": "chat",
+   "user": "观众5",
+   "text": "求课件",
+   "sentiment": 0.52
+  },
+  {
+   "t": 1080,
+   "type": "viewer",
+   "viewers": 78
+  },
+  {
+   "t": 1082,
+   "type": "chat",
+   "user": "观众35",
+   "text": "2",
+   "sentiment": -0.2
+  },
+  {
+   "t": 1110,
+   "type": "viewer",
+   "viewers": 78
+  },
+  {
+   "t": 1114,
+   "type": "chat",
+   "user": "观众2",
+   "text": "求课件",
+   "sentiment": 0.4
+  },
+  {
+   "t": 1137,
+   "type": "chat",
+   "user": "观众1",
+   "text": "老师能再讲一遍吗",
+   "sentiment": 0.36
+  },
+  {
+   "t": 1140,
+   "type": "viewer",
+   "viewers": 79
+  },
+  {
+   "t": 1168,
+   "type": "chat",
+   "user": "观众13",
+   "text": "懂了",
+   "sentiment": 0.53
+  },
+  {
+   "t": 1170,
+   "type": "viewer",
+   "viewers": 80
+  },
+  {
+   "t": 1186,
+   "type": "chat",
+   "user": "观众8",
+   "text": "哈哈",
+   "sentiment": 0.19
+  },
+  {
+   "t": 1200,
+   "type": "viewer",
+   "viewers": 80
+  },
+  {
+   "t": 1223,
+   "type": "chat",
+   "user": "观众12",
+   "text": "这个坑我们踩过",
+   "sentiment": 0.46
+  },
+  {
+   "t": 1230,
+   "type": "viewer",
+   "viewers": 80
+  },
+  {
+   "t": 1230,
+   "type": "like",
+   "count": 14
+  },
+  {
+   "t": 1239,
+   "type": "chat",
+   "user": "观众10",
+   "text": "价格怎么算",
+   "sentiment": -0.02
+  },
+  {
+   "t": 1245,
+   "type": "chat",
+   "user": "观众14",
+   "text": "老师好",
+   "sentiment": 0.07
+  },
+  {
+   "t": 1260,
+   "type": "viewer",
+   "viewers": 80
+  },
+  {
+   "t": 1284,
+   "type": "chat",
+   "user": "观众4",
+   "text": "有资料吗",
+   "sentiment": 0.29
+  },
+  {
+   "t": 1290,
+   "type": "viewer",
+   "viewers": 81
+  },
+  {
+   "t": 1290,
+   "type": "like",
+   "count": 1
+  },
+  {
+   "t": 1313,
+   "type": "chat",
+   "user": "观众31",
+   "text": "老师能再讲一遍吗",
+   "sentiment": -0.21
+  },
+  {
+   "t": 1319,
+   "type": "chat",
+   "user": "观众5",
+   "text": "111",
+   "sentiment": 0.4
+  },
+  {
+   "t": 1320,
+   "type": "viewer",
+   "viewers": 82
+  },
+  {
+   "t": 1326,
+   "type": "chat",
+   "user": "观众4",
+   "text": "能回放吗",
+   "sentiment": 0.3
+  },
+  {
+   "t": 1350,
+   "type": "viewer",
+   "viewers": 81
+  },
+  {
+   "t": 1350,
+   "type": "like",
+   "count": 15
+  },
+  {
+   "t": 1354,
+   "type": "chat",
+   "user": "观众39",
+   "text": "有资料吗",
+   "sentiment": 0.42
+  },
+  {
+   "t": 1380,
+   "type": "viewer",
+   "viewers": 83
+  },
+  {
+   "t": 1380,
+   "type": "like",
+   "count": 10
+  },
+  {
+   "t": 1390,
+   "type": "chat",
+   "user": "观众5",
+   "text": "这个数据哪来的",
+   "sentiment": -0.17
+  },
+  {
+   "t": 1399,
+   "type": "chat",
+   "user": "观众18",
+   "text": "我们公司也是这样",
+   "sentiment": -0.11
+  },
+  {
+   "t": 1410,
+   "type": "viewer",
+   "viewers": 83
+  },
+  {
+   "t": 1420,
+   "type": "chat",
+   "user": "观众36",
+   "text": "求课件",
+   "sentiment": 0.3
+  },
+  {
+   "t": 1434,
+   "type": "chat",
+   "user": "观众31",
+   "text": "这个功能怎么开",
+   "sentiment": 0.1
+  },
+  {
+   "t": 1440,
+   "type": "viewer",
+   "viewers": 83
+  },
+  {
+   "t": 1451,
+   "type": "chat",
+   "user": "观众39",
+   "text": "求课件",
+   "sentiment": 0.45
+  },
+  {
+   "t": 1455,
+   "type": "chat",
+   "user": "观众20",
+   "text": "懂了",
+   "sentiment": 0.04
+  },
+  {
+   "t": 1470,
+   "type": "viewer",
+   "viewers": 83
+  },
+  {
+   "t": 1470,
+   "type": "like",
+   "count": 15
+  },
+  {
+   "t": 1487,
+   "type": "chat",
+   "user": "观众23",
+   "text": "价格怎么算",
+   "sentiment": -0.18
+  },
+  {
+   "t": 1493,
+   "type": "chat",
+   "user": "观众18",
+   "text": "老师能再讲一遍吗",
+   "sentiment": -0.02
+  },
+  {
+   "t": 1500,
+   "type": "viewer",
+   "viewers": 83
+  },
+  {
+   "t": 1500,
+   "type": "chat",
+   "user": "观众13",
+   "text": "懂了",
+   "sentiment": 0.45
+  },
+  {
+   "t": 1500,
+   "type": "like",
+   "count": 15
+  },
+  {
+   "t": 1530,
+   "type": "viewer",
+   "viewers": 81
+  },
+  {
+   "t": 1560,
+   "type": "viewer",
+   "viewers": 81
+  },
+  {
+   "t": 1590,
+   "type": "viewer",
+   "viewers": 81
+  },
+  {
+   "t": 1620,
+   "type": "viewer",
+   "viewers": 80
+  },
+  {
+   "t": 1650,
+   "type": "viewer",
+   "viewers": 78
+  },
+  {
+   "t": 1680,
+   "type": "viewer",
+   "viewers": 74
+  },
+  {
+   "t": 1710,
+   "type": "viewer",
+   "viewers": 70
+  },
+  {
+   "t": 1740,
+   "type": "viewer",
+   "viewers": 69
+  },
+  {
+   "t": 1770,
+   "type": "viewer",
+   "viewers": 66
+  },
+  {
+   "t": 1770,
+   "type": "like",
+   "count": 2
+  },
+  {
+   "t": 1799,
+   "type": "chat",
+   "user": "观众21",
+   "text": "老师能再讲一遍吗",
+   "sentiment": 0.2
+  },
+  {
+   "t": 1800,
+   "type": "viewer",
+   "viewers": 65
+  },
+  {
+   "t": 1830,
+   "type": "viewer",
+   "viewers": 65
+  },
+  {
+   "t": 1851,
+   "type": "chat",
+   "user": "观众32",
+   "text": "老师能再讲一遍吗",
+   "sentiment": 0.04
+  },
+  {
+   "t": 1860,
+   "type": "viewer",
+   "viewers": 64
+  },
+  {
+   "t": 1890,
+   "type": "viewer",
+   "viewers": 64
+  },
+  {
+   "t": 1895,
+   "type": "chat",
+   "user": "观众35",
+   "text": "讲得好",
+   "sentiment": -0.01
+  },
+  {
+   "t": 1920,
+   "type": "viewer",
+   "viewers": 65
+  },
+  {
+   "t": 1950,
+   "type": "viewer",
+   "viewers": 66
+  },
+  {
+   "t": 1980,
+   "type": "viewer",
+   "viewers": 68
+  },
+  {
+   "t": 2010,
+   "type": "viewer",
+   "viewers": 70
+  },
+  {
+   "t": 2012,
+   "type": "chat",
+   "user": "观众29",
+   "text": "价格怎么算",
+   "sentiment": 0.47
+  },
+  {
+   "t": 2040,
+   "type": "viewer",
+   "viewers": 71
+  },
+  {
+   "t": 2070,
+   "type": "viewer",
+   "viewers": 71
+  },
+  {
+   "t": 2084,
+   "type": "chat",
+   "user": "观众6",
+   "text": "价格怎么算",
+   "sentiment": 0.43
+  },
+  {
+   "t": 2100,
+   "type": "viewer",
+   "viewers": 70
+  },
+  {
+   "t": 2130,
+   "type": "viewer",
+   "viewers": 70
+  },
+  {
+   "t": 2137,
+   "type": "chat",
+   "user": "观众33",
+   "text": "这个功能怎么开",
+   "sentiment": 0.08
+  },
+  {
+   "t": 2160,
+   "type": "viewer",
+   "viewers": 69
+  },
+  {
+   "t": 2160,
+   "type": "chat",
+   "user": "观众36",
+   "text": "能回放吗",
+   "sentiment": -0.03
+  },
+  {
+   "t": 2165,
+   "type": "interact",
+   "kind": "lottery",
+   "payload": {
+    "text": "有没有踩过这个坑的？扣个 1 我看到",
+    "joined": 36
+   }
+  },
+  {
+   "t": 2166,
+   "type": "chat",
+   "user": "观众27",
+   "text": "价格怎么算",
+   "sentiment": 0.56
+  },
+  {
+   "t": 2168,
+   "type": "chat",
+   "user": "观众39",
+   "text": "懂了",
+   "sentiment": 0.25
+  },
+  {
+   "t": 2170,
+   "type": "chat",
+   "user": "观众32",
+   "text": "已签到",
+   "sentiment": 0.52
+  },
+  {
+   "t": 2188,
+   "type": "chat",
+   "user": "观众40",
+   "text": "有资料吗",
+   "sentiment": 0.55
+  },
+  {
+   "t": 2190,
+   "type": "viewer",
+   "viewers": 68
+  },
+  {
+   "t": 2205,
+   "type": "chat",
+   "user": "观众36",
+   "text": "已签到",
+   "sentiment": 0.03
+  },
+  {
+   "t": 2208,
+   "type": "chat",
+   "user": "观众19",
+   "text": "老师好",
+   "sentiment": 0.45
+  },
+  {
+   "t": 2216,
+   "type": "chat",
+   "user": "观众17",
+   "text": "这个坑我们踩过",
+   "sentiment": 0.32
+  },
+  {
+   "t": 2218,
+   "type": "chat",
+   "user": "观众11",
+   "text": "这个数据哪来的",
+   "sentiment": 0.07
+  },
+  {
+   "t": 2219,
+   "type": "chat",
+   "user": "观众21",
+   "text": "老师能再讲一遍吗",
+   "sentiment": 0.01
+  },
+  {
+   "t": 2220,
+   "type": "viewer",
+   "viewers": 67
+  },
+  {
+   "t": 2220,
+   "type": "like",
+   "count": 5
+  },
+  {
+   "t": 2224,
+   "type": "chat",
+   "user": "观众37",
+   "text": "111",
+   "sentiment": 0.21
+  },
+  {
+   "t": 2228,
+   "type": "chat",
+   "user": "观众39",
+   "text": "价格怎么算",
+   "sentiment": 0.08
+  },
+  {
+   "t": 2238,
+   "type": "chat",
+   "user": "观众18",
+   "text": "111",
+   "sentiment": 0.48
+  },
+  {
+   "t": 2242,
+   "type": "chat",
+   "user": "观众31",
+   "text": "这个功能怎么开",
+   "sentiment": 0.07
+  },
+  {
+   "t": 2243,
+   "type": "chat",
+   "user": "观众32",
+   "text": "这个坑我们踩过",
+   "sentiment": 0.43
+  },
+  {
+   "t": 2250,
+   "type": "viewer",
+   "viewers": 67
+  },
+  {
+   "t": 2252,
+   "type": "chat",
+   "user": "观众26",
+   "text": "能回放吗",
+   "sentiment": 0.05
+  },
+  {
+   "t": 2280,
+   "type": "viewer",
+   "viewers": 66
+  },
+  {
+   "t": 2282,
+   "type": "chat",
+   "user": "观众27",
+   "text": "这个数据哪来的",
+   "sentiment": -0.09
+  },
+  {
+   "t": 2310,
+   "type": "viewer",
+   "viewers": 66
+  },
+  {
+   "t": 2328,
+   "type": "chat",
+   "user": "观众35",
+   "text": "哈哈",
+   "sentiment": -0.16
+  },
+  {
+   "t": 2335,
+   "type": "chat",
+   "user": "观众33",
+   "text": "哈哈",
+   "sentiment": 0.27
+  },
+  {
+   "t": 2340,
+   "type": "viewer",
+   "viewers": 65
+  },
+  {
+   "t": 2340,
+   "type": "like",
+   "count": 13
+  },
+  {
+   "t": 2353,
+   "type": "chat",
+   "user": "观众7",
+   "text": "哈哈",
+   "sentiment": 0.28
+  },
+  {
+   "t": 2370,
+   "type": "viewer",
+   "viewers": 65
+  },
+  {
+   "t": 2385,
+   "type": "chat",
+   "user": "观众15",
+   "text": "已签到",
+   "sentiment": 0.12
+  },
+  {
+   "t": 2400,
+   "type": "viewer",
+   "viewers": 64
+  },
+  {
+   "t": 2407,
+   "type": "chat",
+   "user": "观众36",
+   "text": "哈哈",
+   "sentiment": -0.19
+  },
+  {
+   "t": 2425,
+   "type": "chat",
+   "user": "观众26",
+   "text": "这个坑我们踩过",
+   "sentiment": 0.17
+  },
+  {
+   "t": 2430,
+   "type": "viewer",
+   "viewers": 63
+  },
+  {
+   "t": 2433,
+   "type": "chat",
+   "user": "观众25",
+   "text": "我们公司也是这样",
+   "sentiment": -0.15
+  },
+  {
+   "t": 2460,
+   "type": "viewer",
+   "viewers": 63
+  },
+  {
+   "t": 2465,
+   "type": "chat",
+   "user": "观众10",
+   "text": "老师能再讲一遍吗",
+   "sentiment": 0.45
+  },
+  {
+   "t": 2465,
+   "type": "interact",
+   "kind": "notice",
+   "payload": {
+    "text": "这一页我停 30 秒，有问题直接打在公屏",
+    "joined": 48
+   }
+  },
+  {
+   "t": 2468,
+   "type": "chat",
+   "user": "观众15",
+   "text": "有资料吗",
+   "sentiment": 0.53
+  },
+  {
+   "t": 2476,
+   "type": "chat",
+   "user": "观众11",
+   "text": "我们公司也是这样",
+   "sentiment": 0.21
+  },
+  {
+   "t": 2483,
+   "type": "chat",
+   "user": "观众40",
+   "text": "老师能再讲一遍吗",
+   "sentiment": -0.21
+  },
+  {
+   "t": 2487,
+   "type": "chat",
+   "user": "观众33",
+   "text": "有资料吗",
+   "sentiment": 0.06
+  },
+  {
+   "t": 2487,
+   "type": "chat",
+   "user": "观众35",
+   "text": "价格怎么算",
+   "sentiment": -0.18
+  },
+  {
+   "t": 2490,
+   "type": "viewer",
+   "viewers": 63
+  },
+  {
+   "t": 2490,
+   "type": "like",
+   "count": 11
+  },
+  {
+   "t": 2492,
+   "type": "chat",
+   "user": "观众6",
+   "text": "求课件",
+   "sentiment": 0.31
+  },
+  {
+   "t": 2493,
+   "type": "chat",
+   "user": "观众26",
+   "text": "懂了",
+   "sentiment": 0.2
+  },
+  {
+   "t": 2497,
+   "type": "chat",
+   "user": "观众30",
+   "text": "这个数据哪来的",
+   "sentiment": 0.49
+  },
+  {
+   "t": 2500,
+   "type": "chat",
+   "user": "观众11",
+   "text": "我们公司也是这样",
+   "sentiment": 0.17
+  },
+  {
+   "t": 2504,
+   "type": "chat",
+   "user": "观众14",
+   "text": "这个坑我们踩过",
+   "sentiment": 0.47
+  },
+  {
+   "t": 2515,
+   "type": "chat",
+   "user": "观众6",
+   "text": "这个坑我们踩过",
+   "sentiment": -0.16
+  },
+  {
+   "t": 2520,
+   "type": "viewer",
+   "viewers": 61
+  },
+  {
+   "t": 2520,
+   "type": "like",
+   "count": 11
+  },
+  {
+   "t": 2527,
+   "type": "chat",
+   "user": "观众35",
+   "text": "懂了",
+   "sentiment": 0.43
+  },
+  {
+   "t": 2531,
+   "type": "chat",
+   "user": "观众15",
+   "text": "2",
+   "sentiment": -0.23
+  },
+  {
+   "t": 2533,
+   "type": "chat",
+   "user": "观众21",
+   "text": "我们公司也是这样",
+   "sentiment": 0.18
+  },
+  {
+   "t": 2546,
+   "type": "chat",
+   "user": "观众39",
+   "text": "2",
+   "sentiment": 0.07
+  },
+  {
+   "t": 2548,
+   "type": "chat",
+   "user": "观众37",
+   "text": "讲得好",
+   "sentiment": 0.28
+  },
+  {
+   "t": 2550,
+   "type": "viewer",
+   "viewers": 61
+  },
+  {
+   "t": 2575,
+   "type": "chat",
+   "user": "观众23",
+   "text": "求课件",
+   "sentiment": 0.12
+  },
+  {
+   "t": 2580,
+   "type": "viewer",
+   "viewers": 60
+  },
+  {
+   "t": 2594,
+   "type": "chat",
+   "user": "观众37",
+   "text": "这个功能怎么开",
+   "sentiment": 0.12
+  },
+  {
+   "t": 2610,
+   "type": "viewer",
+   "viewers": 59
+  },
+  {
+   "t": 2630,
+   "type": "chat",
+   "user": "观众31",
+   "text": "2",
+   "sentiment": 0.04
+  },
+  {
+   "t": 2640,
+   "type": "viewer",
+   "viewers": 58
+  },
+  {
+   "t": 2663,
+   "type": "chat",
+   "user": "观众40",
+   "text": "老师好",
+   "sentiment": 0.01
+  },
+  {
+   "t": 2668,
+   "type": "chat",
+   "user": "观众29",
+   "text": "老师好",
+   "sentiment": 0.3
+  },
+  {
+   "t": 2670,
+   "type": "viewer",
+   "viewers": 57
+  },
+  {
+   "t": 2682,
+   "type": "chat",
+   "user": "观众24",
+   "text": "111",
+   "sentiment": 0.37
+  },
+  {
+   "t": 2687,
+   "type": "chat",
+   "user": "观众8",
+   "text": "我们公司也是这样",
+   "sentiment": 0.04
+  },
+  {
+   "t": 2700,
+   "type": "viewer",
+   "viewers": 56
+  },
+  {
+   "t": 2721,
+   "type": "chat",
+   "user": "观众20",
+   "text": "有资料吗",
+   "sentiment": -0.09
+  },
+  {
+   "t": 2730,
+   "type": "viewer",
+   "viewers": 55
+  },
+  {
+   "t": 2738,
+   "type": "chat",
+   "user": "观众36",
+   "text": "价格怎么算",
+   "sentiment": -0.09
+  },
+  {
+   "t": 2760,
+   "type": "viewer",
+   "viewers": 54
+  },
+  {
+   "t": 2782,
+   "type": "chat",
+   "user": "观众25",
+   "text": "能回放吗",
+   "sentiment": -0.13
+  },
+  {
+   "t": 2790,
+   "type": "viewer",
+   "viewers": 54
+  },
+  {
+   "t": 2793,
+   "type": "chat",
+   "user": "观众38",
+   "text": "哈哈",
+   "sentiment": 0.49
+  },
+  {
+   "t": 2820,
+   "type": "viewer",
+   "viewers": 52
+  },
+  {
+   "t": 2839,
+   "type": "chat",
+   "user": "观众24",
+   "text": "哈哈",
+   "sentiment": -0.22
+  },
+  {
+   "t": 2850,
+   "type": "viewer",
+   "viewers": 52
+  },
+  {
+   "t": 2866,
+   "type": "chat",
+   "user": "观众6",
+   "text": "2",
+   "sentiment": -0.13
+  },
+  {
+   "t": 2870,
+   "type": "donate",
+   "amount": 5.1
+  },
+  {
+   "t": 2878,
+   "type": "chat",
+   "user": "观众35",
+   "text": "老师好",
+   "sentiment": -0.03
+  },
+  {
+   "t": 2880,
+   "type": "viewer",
+   "viewers": 51
+  },
+  {
+   "t": 2890,
+   "type": "chat",
+   "user": "观众35",
+   "text": "价格怎么算",
+   "sentiment": 0.18
+  },
+  {
+   "t": 2902,
+   "type": "chat",
+   "user": "观众39",
+   "text": "这个数据哪来的",
+   "sentiment": 0.29
+  },
+  {
+   "t": 2910,
+   "type": "viewer",
+   "viewers": 49
+  },
+  {
+   "t": 2939,
+   "type": "chat",
+   "user": "观众1",
+   "text": "这个功能怎么开",
+   "sentiment": 0.45
+  },
+  {
+   "t": 2940,
+   "type": "viewer",
+   "viewers": 49
+  },
+  {
+   "t": 2944,
+   "type": "chat",
+   "user": "观众39",
+   "text": "这个功能怎么开",
+   "sentiment": 0.2
+  },
+  {
+   "t": 2966,
+   "type": "chat",
+   "user": "观众11",
+   "text": "懂了",
+   "sentiment": 0.17
+  },
+  {
+   "t": 2970,
+   "type": "viewer",
+   "viewers": 48
+  },
+  {
+   "t": 2978,
+   "type": "chat",
+   "user": "观众39",
+   "text": "价格怎么算",
+   "sentiment": 0.23
+  },
+  {
+   "t": 2995,
+   "type": "chat",
+   "user": "观众31",
+   "text": "2",
+   "sentiment": 0.41
+  },
+  {
+   "t": 3000,
+   "type": "viewer",
+   "viewers": 47
+  },
+  {
+   "t": 3004,
+   "type": "chat",
+   "user": "观众35",
+   "text": "已签到",
+   "sentiment": 0.03
+  },
+  {
+   "t": 3005,
+   "type": "interact",
+   "kind": "notice",
+   "payload": {
+    "text": "这一页我停 30 秒，有问题直接打在公屏",
+    "joined": 26
+   }
+  },
+  {
+   "t": 3011,
+   "type": "chat",
+   "user": "观众35",
+   "text": "2",
+   "sentiment": 0.41
+  },
+  {
+   "t": 3015,
+   "type": "chat",
+   "user": "观众4",
+   "text": "有资料吗",
+   "sentiment": 0.18
+  },
+  {
+   "t": 3019,
+   "type": "chat",
+   "user": "观众11",
+   "text": "哈哈",
+   "sentiment": 0.56
+  },
+  {
+   "t": 3028,
+   "type": "chat",
+   "user": "观众10",
+   "text": "老师能再讲一遍吗",
+   "sentiment": 0.31
+  },
+  {
+   "t": 3030,
+   "type": "viewer",
+   "viewers": 46
+  },
+  {
+   "t": 3030,
+   "type": "like",
+   "count": 12
+  },
+  {
+   "t": 3036,
+   "type": "chat",
+   "user": "观众26",
+   "text": "这个坑我们踩过",
+   "sentiment": 0.3
+  },
+  {
+   "t": 3048,
+   "type": "chat",
+   "user": "观众28",
+   "text": "这个坑我们踩过",
+   "sentiment": -0.04
+  },
+  {
+   "t": 3050,
+   "type": "chat",
+   "user": "观众39",
+   "text": "价格怎么算",
+   "sentiment": 0.27
+  },
+  {
+   "t": 3050,
+   "type": "chat",
+   "user": "观众38",
+   "text": "这个坑我们踩过",
+   "sentiment": 0.15
+  },
+  {
+   "t": 3053,
+   "type": "chat",
+   "user": "观众6",
+   "text": "我们公司也是这样",
+   "sentiment": -0.15
+  },
+  {
+   "t": 3060,
+   "type": "viewer",
+   "viewers": 45
+  },
+  {
+   "t": 3060,
+   "type": "like",
+   "count": 6
+  },
+  {
+   "t": 3065,
+   "type": "chat",
+   "user": "观众24",
+   "text": "老师能再讲一遍吗",
+   "sentiment": 0.39
+  },
+  {
+   "t": 3068,
+   "type": "chat",
+   "user": "观众3",
+   "text": "老师好",
+   "sentiment": 0.1
+  },
+  {
+   "t": 3070,
+   "type": "chat",
+   "user": "观众22",
+   "text": "这个坑我们踩过",
+   "sentiment": 0.24
+  },
+  {
+   "t": 3072,
+   "type": "chat",
+   "user": "观众20",
+   "text": "懂了",
+   "sentiment": 0.12
+  },
+  {
+   "t": 3077,
+   "type": "chat",
+   "user": "观众26",
+   "text": "老师好",
+   "sentiment": -0.16
+  },
+  {
+   "t": 3089,
+   "type": "chat",
+   "user": "观众7",
+   "text": "我们公司也是这样",
+   "sentiment": 0.15
+  },
+  {
+   "t": 3090,
+   "type": "viewer",
+   "viewers": 45
+  },
+  {
+   "t": 3107,
+   "type": "chat",
+   "user": "观众17",
+   "text": "这个数据哪来的",
+   "sentiment": 0
+  },
+  {
+   "t": 3120,
+   "type": "viewer",
+   "viewers": 43
+  },
+  {
+   "t": 3120,
+   "type": "like",
+   "count": 12
+  },
+  {
+   "t": 3127,
+   "type": "chat",
+   "user": "观众18",
+   "text": "这个坑我们踩过",
+   "sentiment": -0.19
+  },
+  {
+   "t": 3150,
+   "type": "viewer",
+   "viewers": 42
+  },
+  {
+   "t": 3171,
+   "type": "chat",
+   "user": "观众16",
+   "text": "这个坑我们踩过",
+   "sentiment": -0.11
+  },
+  {
+   "t": 3180,
+   "type": "viewer",
+   "viewers": 41
+  },
+  {
+   "t": 3182,
+   "type": "chat",
+   "user": "观众30",
+   "text": "这个功能怎么开",
+   "sentiment": 0.34
+  },
+  {
+   "t": 3210,
+   "type": "viewer",
+   "viewers": 41
+  },
+  {
+   "t": 3210,
+   "type": "chat",
+   "user": "观众21",
+   "text": "价格怎么算",
+   "sentiment": 0.14
+  }
+ ]
+}

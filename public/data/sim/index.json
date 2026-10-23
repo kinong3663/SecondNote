@@ -1,0 +1,77 @@
+{
+  "generatedAt": "2026-10-23T03:02:16.508Z",
+  "sessions": [
+    {
+      "sessionId": "sim_01",
+      "title": "Q4 产品内训 · 第 1 讲",
+      "scenario": "good",
+      "durationSec": 3000,
+      "startTime": 1793858400000,
+      "events": 519,
+      "chat": 393,
+      "interacts": 8,
+      "stalls": 0,
+      "drops": 0
+    },
+    {
+      "sessionId": "sim_02",
+      "title": "客户成功工作坊 · 第 2 讲",
+      "scenario": "mediocre",
+      "durationSec": 3240,
+      "startTime": 1793944800000,
+      "events": 332,
+      "chat": 196,
+      "interacts": 6,
+      "stalls": 0,
+      "drops": 4
+    },
+    {
+      "sessionId": "sim_03",
+      "title": "AI 数字人共创社 · 第 3 讲",
+      "scenario": "bad",
+      "durationSec": 4620,
+      "startTime": 1794031200000,
+      "events": 213,
+      "chat": 40,
+      "interacts": 2,
+      "stalls": 0,
+      "drops": 5
+    },
+    {
+      "sessionId": "sim_04",
+      "title": "新功能发布说明会 · 第 4 讲",
+      "scenario": "good",
+      "durationSec": 3000,
+      "startTime": 1794117600000,
+      "events": 474,
+      "chat": 357,
+      "interacts": 7,
+      "stalls": 0,
+      "drops": 0
+    },
+    {
+      "sessionId": "sim_05",
+      "title": "客户成功工作坊 · 第 5 讲",
+      "scenario": "mediocre",
+      "durationSec": 2460,
+      "startTime": 1794204000000,
+      "events": 244,
+      "chat": 144,
+      "interacts": 4,
+      "stalls": 1,
+      "drops": 5
+    },
+    {
+      "sessionId": "sim_06",
+      "title": "Q4 产品内训 · 第 6 讲",
+      "scenario": "bad",
+      "durationSec": 4020,
+      "startTime": 1794290400000,
+      "events": 189,
+      "chat": 33,
+      "interacts": 2,
+      "stalls": 1,
+      "drops": 5
+    }
+  ]
+}

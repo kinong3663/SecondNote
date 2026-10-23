@@ -1,0 +1,164 @@
+{
+  "meta": {
+    "sessionId": "sim_01",
+    "title": "Q4 产品内训 · 第 1 讲",
+    "scenario": "good",
+    "date": "2026-11-05",
+    "durationSec": 3000,
+    "source": "sim",
+    "generatedAt": "2026-10-23T03:02:28.345Z",
+    "engine": "rule+baseline v1"
+  },
+  "kpi": {
+    "durationMin": 50,
+    "peak": 188,
+    "avgOnline": 153,
+    "start": 130,
+    "end": 108,
+    "endRetention": 0.831,
+    "chatTotal": 393,
+    "chatPerMin": 7.86,
+    "sentiment": 0.17,
+    "interacts": 8,
+    "stalls": 0
+  },
+  "conclusions": [
+    "最好的一段是「产品能力总览」（14'00\"-23'00\"）：弹幕 64 条、点赞 32 次，段内人数变化 14.7%。",
+    "全场没有出现异常下跌（各窗口跌幅都在基线附近），节奏是稳的。",
+    "最该做的一件事：把「产品能力总览」这段做成切片，下一场开场直接复用。"
+  ],
+  "drops": [],
+  "topics": [
+    {
+      "id": "t1",
+      "startSec": 0,
+      "endSec": 360,
+      "topic": "开场与目标",
+      "hasHook": true,
+      "drop": 0.07692307692307693,
+      "avg": 134.46153846153845,
+      "chat": 44,
+      "likes": 17,
+      "minutes": 6
+    },
+    {
+      "id": "t2",
+      "startSec": 360,
+      "endSec": 840,
+      "topic": "行业痛点",
+      "hasHook": true,
+      "drop": 0.16428571428571428,
+      "avg": 150.94117647058823,
+      "chat": 61,
+      "likes": 17,
+      "minutes": 8
+    },
+    {
+      "id": "t3",
+      "startSec": 840,
+      "endSec": 1380,
+      "topic": "产品能力总览",
+      "hasHook": true,
+      "drop": 0.147239263803681,
+      "avg": 175.47368421052633,
+      "chat": 64,
+      "likes": 32,
+      "minutes": 9
+    },
+    {
+      "id": "t4",
+      "startSec": 1380,
+      "endSec": 1860,
+      "topic": "现场演示",
+      "hasHook": true,
+      "drop": -0.11229946524064172,
+      "avg": 175.7058823529412,
+      "chat": 56,
+      "likes": 29,
+      "minutes": 8
+    },
+    {
+      "id": "t5",
+      "startSec": 1860,
+      "endSec": 2220,
+      "topic": "客户案例",
+      "hasHook": true,
+      "drop": -0.09036144578313253,
+      "avg": 158.69230769230768,
+      "chat": 46,
+      "likes": 16,
+      "minutes": 6
+    },
+    {
+      "id": "t6",
+      "startSec": 2220,
+      "endSec": 2520,
+      "topic": "价格与套餐",
+      "hasHook": true,
+      "drop": -0.10596026490066225,
+      "avg": 143.8181818181818,
+      "chat": 44,
+      "likes": 18,
+      "minutes": 5
+    },
+    {
+      "id": "t7",
+      "startSec": 2520,
+      "endSec": 2820,
+      "topic": "服务与交付",
+      "hasHook": true,
+      "drop": -0.14074074074074075,
+      "avg": 126,
+      "chat": 46,
+      "likes": 4,
+      "minutes": 5
+    },
+    {
+      "id": "t8",
+      "startSec": 2820,
+      "endSec": 3000,
+      "topic": "答疑与收尾",
+      "hasHook": true,
+      "drop": -0.06896551724137931,
+      "avg": 112.16666666666667,
+      "chat": 34,
+      "likes": 8,
+      "minutes": 3
+    }
+  ],
+  "highlights": [
+    {
+      "at": "6'00\"",
+      "count": 20,
+      "topic": "行业痛点"
+    },
+    {
+      "at": "23'00\"",
+      "count": 19,
+      "topic": "现场演示"
+    },
+    {
+      "at": "47'00\"",
+      "count": 19,
+      "topic": "答疑与收尾"
+    }
+  ],
+  "issues": [],
+  "completeness": {
+    "tier": "A",
+    "real": [
+      "场次与时长（channel/session/list）",
+      "回放与播放地址（channel/playback/list）"
+    ],
+    "sdk": [
+      "弹幕（模拟 SDK 事件流）",
+      "点赞",
+      "答题卡/签到/公告/抽奖"
+    ],
+    "sim": [
+      "分钟级在线人数曲线",
+      "讲师话题分段"
+    ],
+    "note": "本次为模拟场次（source: sim），接入真实场次后按同一引擎重算；缺失维度会在报告顶部标注。"
+  }
+}

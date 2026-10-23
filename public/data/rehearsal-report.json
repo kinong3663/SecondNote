@@ -1,0 +1,410 @@
+{
+  "meta": {
+    "title": "Q4 新品发布会 · 彩排稿",
+    "channelId": "4711207",
+    "baselineFrom": "Q3 企业直播实战分享（2026-10-09）",
+    "baselineSource": "mock",
+    "generatedAt": "2026-10-23T02:14:59.279Z",
+    "engine": "rule+baseline v1"
+  },
+  "overallScore": 66,
+  "avgRisk": 0.3415,
+  "predictedRetention": 0.7029,
+  "segments": [
+    {
+      "id": "s1",
+      "topic": "开场与自我介绍",
+      "startSec": 0,
+      "endSec": 150,
+      "startMs": 0,
+      "endMs": 150000,
+      "risk": 0.0932,
+      "metrics": {
+        "expectDrop": -0.0119,
+        "hasHook": true,
+        "hookGapMin": 0,
+        "density": 4.2,
+        "points": 10.5,
+        "durationMin": 2.5,
+        "keywordHit": "1/5",
+        "missedKeywords": [
+          "价格",
+          "续费",
+          "ROI",
+          "答疑"
+        ]
+      },
+      "evidence": {
+        "topic": "开场与自我介绍",
+        "startSec": 0,
+        "endSec": 180,
+        "observedDrop": -0.0035,
+        "chatPerBucket": 4.24
+      },
+      "problem": "信息过载（4.2 点/分钟）。按历史基线预计本段流失 0.4%。",
+      "advice": "信息太密，观众消化不了。拆成两段，中间插一句「我停一下，刚才这两个点哪个更急？」。"
+    },
+    {
+      "id": "s2",
+      "topic": "行业痛点",
+      "startSec": 150,
+      "endSec": 450,
+      "startMs": 150000,
+      "endMs": 450000,
+      "risk": 0.1,
+      "metrics": {
+        "expectDrop": -0.01,
+        "hasHook": true,
+        "hookGapMin": 0,
+        "density": 1.4,
+        "points": 7,
+        "durationMin": 5,
+        "keywordHit": "0/5",
+        "missedKeywords": [
+          "价格",
+          "续费",
+          "ROI",
+          "试用",
+          "答疑"
+        ]
+      },
+      "evidence": {
+        "topic": "行业痛点",
+        "startSec": 180,
+        "endSec": 480,
+        "observedDrop": 0.0235,
+        "chatPerBucket": 2.64
+      },
+      "problem": "缺少关键信息。按历史基线预计本段基本持平。",
+      "advice": "补一句跟「价格」相关的具体信息（观众最常追问这个），一句话就够，别展开成新段落。"
+    },
+    {
+      "id": "s3",
+      "topic": "产品能力总览",
+      "startSec": 450,
+      "endSec": 870,
+      "startMs": 450000,
+      "endMs": 870000,
+      "risk": 0.7199,
+      "metrics": {
+        "expectDrop": -0.0814,
+        "hasHook": false,
+        "hookGapMin": 7,
+        "density": 1.43,
+        "points": 10,
+        "durationMin": 7,
+        "keywordHit": "1/5",
+        "missedKeywords": [
+          "续费",
+          "ROI",
+          "试用",
+          "答疑"
+        ]
+      },
+      "evidence": {
+        "topic": "产品能力总览",
+        "startSec": 480,
+        "endSec": 900,
+        "observedDrop": -0.0814,
+        "chatPerBucket": 2.88
+      },
+      "problem": "连续 7.0 分钟没有互动钩子。按历史基线预计本段流失 8.1%。",
+      "advice": "在这段开头插一句提问，把观众从「听」拉回「说」：「在讲产品能力总览之前先问一下——你们现在团队里有几个人在管直播？打在公屏上，我按人数决定讲多深。」然后停 8 秒等弹幕（停顿写进台本备注，别临场找）。"
+    },
+    {
+      "id": "s4",
+      "topic": "现场演示",
+      "startSec": 870,
+      "endSec": 1170,
+      "startMs": 870000,
+      "endMs": 1170000,
+      "risk": 0.1,
+      "metrics": {
+        "expectDrop": -0.01,
+        "hasHook": true,
+        "hookGapMin": 0,
+        "density": 2.6,
+        "points": 13,
+        "durationMin": 5,
+        "keywordHit": "0/5",
+        "missedKeywords": [
+          "价格",
+          "续费",
+          "ROI",
+          "试用",
+          "答疑"
+        ]
+      },
+      "evidence": {
+        "topic": "现场演示",
+        "startSec": 900,
+        "endSec": 1200,
+        "observedDrop": 0.0275,
+        "chatPerBucket": 4.79
+      },
+      "problem": "缺少关键信息。按历史基线预计本段基本持平。",
+      "advice": "补一句跟「价格」相关的具体信息（观众最常追问这个），一句话就够，别展开成新段落。"
+    },
+    {
+      "id": "s5",
+      "topic": "客户案例",
+      "startSec": 1170,
+      "endSec": 1470,
+      "startMs": 1170000,
+      "endMs": 1470000,
+      "risk": 0.1709,
+      "metrics": {
+        "expectDrop": -0.0267,
+        "hasHook": true,
+        "hookGapMin": 0,
+        "density": 2.1,
+        "points": 10.5,
+        "durationMin": 5,
+        "keywordHit": "0/5",
+        "missedKeywords": [
+          "价格",
+          "续费",
+          "ROI",
+          "试用",
+          "答疑"
+        ]
+      },
+      "evidence": {
+        "topic": "客户案例",
+        "startSec": 1200,
+        "endSec": 1500,
+        "observedDrop": -0.0304,
+        "chatPerBucket": 2.56
+      },
+      "problem": "缺少关键信息。按历史基线预计本段流失 3.0%。",
+      "advice": "补一句跟「价格」相关的具体信息（观众最常追问这个），一句话就够，别展开成新段落。"
+    },
+    {
+      "id": "s6",
+      "topic": "价格与套餐",
+      "startSec": 1470,
+      "endSec": 1830,
+      "startMs": 1470000,
+      "endMs": 1830000,
+      "risk": 0.7937,
+      "metrics": {
+        "expectDrop": -0.1216,
+        "hasHook": false,
+        "hookGapMin": 6,
+        "density": 2.42,
+        "points": 14.5,
+        "durationMin": 6,
+        "keywordHit": "2/5",
+        "missedKeywords": [
+          "续费",
+          "ROI",
+          "答疑"
+        ]
+      },
+      "evidence": {
+        "topic": "价格与套餐",
+        "startSec": 1500,
+        "endSec": 1860,
+        "observedDrop": -0.1216,
+        "chatPerBucket": 0.73
+      },
+      "problem": "连续 6.0 分钟没有互动钩子。按历史基线预计本段流失 12.2%。",
+      "advice": "在这段开头插一句提问，把观众从「听」拉回「说」：「在讲价格与套餐之前先问一下——你们今年的直播预算是挂在市场还是挂在采购？扣 1 的按市场讲，扣 2 的按采购讲。」然后停 8 秒等弹幕（停顿写进台本备注，别临场找）。"
+    },
+    {
+      "id": "s7",
+      "topic": "服务与交付",
+      "startSec": 1830,
+      "endSec": 2130,
+      "startMs": 1830000,
+      "endMs": 2130000,
+      "risk": 0.5667,
+      "metrics": {
+        "expectDrop": 0,
+        "hasHook": false,
+        "hookGapMin": 11,
+        "density": 1,
+        "points": 5,
+        "durationMin": 5,
+        "keywordHit": "0/5",
+        "missedKeywords": [
+          "价格",
+          "续费",
+          "ROI",
+          "试用",
+          "答疑"
+        ]
+      },
+      "evidence": {
+        "topic": "服务与交付",
+        "startSec": 1860,
+        "endSec": 2160,
+        "observedDrop": 0.0399,
+        "chatPerBucket": 1.07
+      },
+      "problem": "连续 11.0 分钟没有互动钩子，要点密度偏低（1.0 点/分钟，占着时长但没有信息量），缺少关键信息。按历史基线预计本段基本持平。",
+      "advice": "在这段开头插一句提问，把观众从「听」拉回「说」：「在讲服务与交付之前先问一下——你们现在有几个人是专岗做直播的？一个的扣 1，两个以上的扣 2。」然后停 8 秒等弹幕（停顿写进台本备注，别临场找）。"
+    },
+    {
+      "id": "s8",
+      "topic": "答疑与收尾",
+      "startSec": 2130,
+      "endSec": 2320,
+      "startMs": 2130000,
+      "endMs": 2320000,
+      "risk": 0.0887,
+      "metrics": {
+        "expectDrop": -0.0168,
+        "hasHook": true,
+        "hookGapMin": 0,
+        "density": 3,
+        "points": 9.5,
+        "durationMin": 3.2,
+        "keywordHit": "2/5",
+        "missedKeywords": [
+          "价格",
+          "续费",
+          "ROI"
+        ]
+      },
+      "evidence": {
+        "topic": "答疑与收尾",
+        "startSec": 2160,
+        "endSec": 2400,
+        "observedDrop": -0.0123,
+        "chatPerBucket": 6.4
+      },
+      "problem": "节奏与信息密度正常。按历史基线预计本段流失 1.2%。",
+      "advice": "补一句跟「价格」相关的具体信息（观众最常追问这个），一句话就够，别展开成新段落。"
+    },
+    {
+      "id": "s9",
+      "topic": "结束语",
+      "startSec": 2320,
+      "endSec": 2400,
+      "startMs": 2320000,
+      "endMs": 2400000,
+      "risk": 0.44,
+      "metrics": {
+        "expectDrop": -0.06,
+        "hasHook": false,
+        "hookGapMin": 1.3,
+        "density": 3,
+        "points": 4,
+        "durationMin": 1.3,
+        "keywordHit": "0/5",
+        "missedKeywords": [
+          "价格",
+          "续费",
+          "ROI",
+          "试用",
+          "答疑"
+        ]
+      },
+      "evidence": null,
+      "problem": "整段没有互动钩子，缺少关键信息。按历史基线预计本段流失 6.0%。",
+      "advice": "补一句跟「价格」相关的具体信息（观众最常追问这个），一句话就够，别展开成新段落。"
+    }
+  ],
+  "risks": [
+    {
+      "id": "s6",
+      "topic": "价格与套餐",
+      "startSec": 1470,
+      "endSec": 1830,
+      "startMs": 1470000,
+      "endMs": 1830000,
+      "risk": 0.7937,
+      "metrics": {
+        "expectDrop": -0.1216,
+        "hasHook": false,
+        "hookGapMin": 6,
+        "density": 2.42,
+        "points": 14.5,
+        "durationMin": 6,
+        "keywordHit": "2/5",
+        "missedKeywords": [
+          "续费",
+          "ROI",
+          "答疑"
+        ]
+      },
+      "evidence": {
+        "topic": "价格与套餐",
+        "startSec": 1500,
+        "endSec": 1860,
+        "observedDrop": -0.1216,
+        "chatPerBucket": 0.73
+      },
+      "problem": "连续 6.0 分钟没有互动钩子。按历史基线预计本段流失 12.2%。",
+      "advice": "在这段开头插一句提问，把观众从「听」拉回「说」：「在讲价格与套餐之前先问一下——你们今年的直播预算是挂在市场还是挂在采购？扣 1 的按市场讲，扣 2 的按采购讲。」然后停 8 秒等弹幕（停顿写进台本备注，别临场找）。"
+    },
+    {
+      "id": "s3",
+      "topic": "产品能力总览",
+      "startSec": 450,
+      "endSec": 870,
+      "startMs": 450000,
+      "endMs": 870000,
+      "risk": 0.7199,
+      "metrics": {
+        "expectDrop": -0.0814,
+        "hasHook": false,
+        "hookGapMin": 7,
+        "density": 1.43,
+        "points": 10,
+        "durationMin": 7,
+        "keywordHit": "1/5",
+        "missedKeywords": [
+          "续费",
+          "ROI",
+          "试用",
+          "答疑"
+        ]
+      },
+      "evidence": {
+        "topic": "产品能力总览",
+        "startSec": 480,
+        "endSec": 900,
+        "observedDrop": -0.0814,
+        "chatPerBucket": 2.88
+      },
+      "problem": "连续 7.0 分钟没有互动钩子。按历史基线预计本段流失 8.1%。",
+      "advice": "在这段开头插一句提问，把观众从「听」拉回「说」：「在讲产品能力总览之前先问一下——你们现在团队里有几个人在管直播？打在公屏上，我按人数决定讲多深。」然后停 8 秒等弹幕（停顿写进台本备注，别临场找）。"
+    },
+    {
+      "id": "s7",
+      "topic": "服务与交付",
+      "startSec": 1830,
+      "endSec": 2130,
+      "startMs": 1830000,
+      "endMs": 2130000,
+      "risk": 0.5667,
+      "metrics": {
+        "expectDrop": 0,
+        "hasHook": false,
+        "hookGapMin": 11,
+        "density": 1,
+        "points": 5,
+        "durationMin": 5,
+        "keywordHit": "0/5",
+        "missedKeywords": [
+          "价格",
+          "续费",
+          "ROI",
+          "试用",
+          "答疑"
+        ]
+      },
+      "evidence": {
+        "topic": "服务与交付",
+        "startSec": 1860,
+        "endSec": 2160,
+        "observedDrop": 0.0399,
+        "chatPerBucket": 1.07
+      },
+      "problem": "连续 11.0 分钟没有互动钩子，要点密度偏低（1.0 点/分钟，占着时长但没有信息量），缺少关键信息。按历史基线预计本段基本持平。",
+      "advice": "在这段开头插一句提问，把观众从「听」拉回「说」：「在讲服务与交付之前先问一下——你们现在有几个人是专岗做直播的？一个的扣 1，两个以上的扣 2。」然后停 8 秒等弹幕（停顿写进台本备注，别临场找）。"
+    }
+  ]
+}

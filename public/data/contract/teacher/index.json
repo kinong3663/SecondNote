@@ -1,0 +1,48 @@
+{
+ "meta": {
+  "generatedAt": "2026-10-23T09:01:18.938Z",
+  "engine": "rule+offline-model",
+  "sessions": 3
+ },
+ "sessions": [
+  {
+   "sessionId": "hcvi46hzlg",
+   "title": "AI数字人共创社学习空间",
+   "day": "2025-11-11",
+   "cards": 73,
+   "viewers": 27,
+   "hotspots": 3,
+   "findings": 5,
+   "high": 2,
+   "minutes": 81.7,
+   "hasCurve": true,
+   "ai": true
+  },
+  {
+   "sessionId": "hco0fx83aa",
+   "title": "AI数字人共创社学习空间",
+   "day": "2025-11-04",
+   "cards": 71,
+   "viewers": 20,
+   "hotspots": 3,
+   "findings": 4,
+   "high": 4,
+   "minutes": 174.7,
+   "hasCurve": true,
+   "ai": true
+  },
+  {
+   "sessionId": "hci9g9krxd",
+   "title": "AI数字人共创社学习空间",
+   "day": "2025-10-30",
+   "cards": 27,
+   "viewers": 10,
+   "hotspots": 1,
+   "findings": 3,
+   "high": 2,
+   "minutes": 85.8,
+   "hasCurve": true,
+   "ai": true
+  }
+ ]
+}

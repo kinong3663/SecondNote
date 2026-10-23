@@ -1,0 +1,90 @@
+{
+ "playRatio": [
+  {
+   "percentage": "0-10",
+   "playCount": 1
+  },
+  {
+   "percentage": "10-20",
+   "playCount": 0
+  },
+  {
+   "percentage": "20-30",
+   "playCount": 0
+  },
+  {
+   "percentage": "30-40",
+   "playCount": 0
+  },
+  {
+   "percentage": "40-50",
+   "playCount": 0
+  },
+  {
+   "percentage": "50-60",
+   "playCount": 0
+  },
+  {
+   "percentage": "60-70",
+   "playCount": 0
+  },
+  {
+   "percentage": "70-80",
+   "playCount": 0
+  },
+  {
+   "percentage": "80-90",
+   "playCount": 0
+  },
+  {
+   "percentage": "90-100",
+   "playCount": 0
+  }
+ ],
+ "videoHot": [
+  {
+   "second": 1,
+   "viewcount": 0
+  }
+ ],
+ "srtList": {
+  "srts": []
+ },
+ "videoview": [
+  {
+   "currentTime": "2026-10-17",
+   "pcVideoView": 0,
+   "mobileVideoView": 0
+  },
+  {
+   "currentTime": "2026-10-18",
+   "pcVideoView": 0,
+   "mobileVideoView": 0
+  },
+  {
+   "currentTime": "2026-10-19",
+   "pcVideoView": 0,
+   "mobileVideoView": 0
+  },
+  {
+   "currentTime": "2026-10-20",
+   "pcVideoView": 0,
+   "mobileVideoView": 0
+  },
+  {
+   "currentTime": "2026-10-21",
+   "pcVideoView": 0,
+   "mobileVideoView": 0
+  },
+  {
+   "currentTime": "2026-10-22",
+   "pcVideoView": 0,
+   "mobileVideoView": 0
+  },
+  {
+   "currentTime": "2026-10-23",
+   "pcVideoView": 1,
+   "mobileVideoView": 0
+  }
+ ]
+}

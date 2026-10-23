@@ -1,0 +1,27 @@
+{
+  "name": "relive-teacher-review",
+  "private": true,
+  "type": "module",
+  "description": "ReLive 教师端复盘台 —— 汇总观众「记住卡」，出热力图与 AI 诊断",
+  "scripts": {
+    "data:cards": "node scripts/build-cards.mjs",
+    "data:teacher": "node scripts/build-cards.mjs && node scripts/build-teacher.mjs",
+    "data:inspect": "node scripts/inspect-cards.mjs && node scripts/inspect-teacher.mjs",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "build:teacher": "vite build --config vite.teacher.config.ts",
+    "sync:teacher": "node scripts/sync-teacher.mjs",
+    "deploy:teacher": "npm run build:teacher && npm run sync:teacher",
+    "verify:live": "node scripts/verify-live.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "check:teacher": "npx esbuild scripts/teacher-smoke.ts --bundle --platform=node --format=esm --outfile=tmp-teacher.mjs && node tmp-teacher.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  }
+}
