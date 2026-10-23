@@ -59,7 +59,12 @@ export function VideoSwitcher({ channel, videos, onSelect }: VideoSwitcherProps)
 
   const bySource = (sourceType: VideoSourceType) =>
     videos.filter((video) => video.sourceType === sourceType);
-  const visibleVideos = bySource(activeTab);
+
+  // 只显示真的有视频的分类：频道里没有直播暂存 / 回放时，就不出现那两个空标签
+  const availableCategories = categories.filter((category) => bySource(category.id).length > 0);
+  const tabs = availableCategories.length ? availableCategories : categories;
+  const activeCategory = tabs.some((tab) => tab.id === activeTab) ? activeTab : tabs[0].id;
+  const visibleVideos = bySource(activeCategory);
 
   return (
     <div className="video-switcher" ref={rootRef}>
@@ -86,30 +91,32 @@ export function VideoSwitcher({ channel, videos, onSelect }: VideoSwitcherProps)
         <div className="video-switcher__panel">
           <div className="video-switcher__panel-head">
             <div>
-              <span className="eyebrow">CHANNEL VIDEOS</span>
-              <strong>切换点播</strong>
+              <span className="eyebrow">COURSE VIDEOS</span>
+              <strong>切换课程</strong>
             </div>
             <span>{String(videos.length).padStart(2, '0')}</span>
           </div>
 
-          <div className="video-switcher__tabs" role="tablist" aria-label="视频分类">
-            {categories.map((category) => {
-              const count = bySource(category.id).length;
-              return (
-                <button
-                  key={category.id}
-                  className={activeTab === category.id ? 'is-active' : ''}
-                  type="button"
-                  role="tab"
-                  aria-selected={activeTab === category.id}
-                  onClick={() => setActiveTab(category.id)}
-                >
-                  {category.label}
-                  <span>{count}</span>
-                </button>
-              );
-            })}
-          </div>
+          {tabs.length > 1 && (
+            <div className="video-switcher__tabs" role="tablist" aria-label="视频分类">
+              {tabs.map((category) => {
+                const count = bySource(category.id).length;
+                return (
+                  <button
+                    key={category.id}
+                    className={activeCategory === category.id ? 'is-active' : ''}
+                    type="button"
+                    role="tab"
+                    aria-selected={activeCategory === category.id}
+                    onClick={() => setActiveTab(category.id)}
+                  >
+                    {category.label}
+                    <span>{count}</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
 
           <div className="video-switcher__list" role="listbox" aria-label="频道点播列表">
             {visibleVideos.map((video) => {
@@ -153,7 +160,9 @@ export function VideoSwitcher({ channel, videos, onSelect }: VideoSwitcherProps)
           </div>
 
           <p className="video-switcher__note">
-            选择后会保留每条视频各自的秒记，不同分类之间互不影响。
+            {tabs.length > 1
+              ? '选择后会保留每条视频各自的秒记，不同分类之间互不影响。'
+              : '选择后会保留每条视频各自的秒记。'}
           </p>
         </div>
       )}
