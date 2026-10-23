@@ -239,9 +239,7 @@ export function aggregate({ notes, chapters = [], durationSec, title = '', video
       level: dom === 'question' || dom === 'fix' ? 'high' : 'medium',
       t0: hs.t0,
       t1: hs.t1,
-      title: hs.chapter
-        ? `${AREA[dom]}最集中 · 「${hs.chapter}」${fmt(hs.t0)}–${fmt(hs.t1)}`
-        : `${AREA[dom]}最集中 · ${fmt(hs.t0)}–${fmt(hs.t1)}`,
+      title: hs.chapter ? `${AREA[dom]}最集中 · ${hs.chapter}` : `${AREA[dom]}最集中`,
       evidence: [
         { k: '卡片', v: `${hs.cards} 张（${hs.perMin}/分钟，全场均值 ${perMin.toFixed(2)}/分钟，${hs.ratio}×）` },
         { k: '类型', v: Object.entries(hs.byType).map(([k, v]) => `${LABELS[k]} ${v}`).join(' · ') },

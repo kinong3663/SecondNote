@@ -15,11 +15,11 @@ const esc = (s: string): string =>
 const n = (v: number): string => (Math.round(v * 10) / 10).toString();
 
 export const TYPE_COLOR: Record<CardType, string> = {
-  question: '#d9534f',
-  fix: '#b46bd9',
-  step: '#4a9bd9',
-  key: '#c9a227',
-  case: '#4fb286',
+  question: '#D9534F',
+  fix: '#B26A08',
+  step: '#2469F3',
+  key: '#1244B5',
+  case: '#8293AD',
 };
 
 export const TYPE_LABEL: Record<CardType, string> = {
@@ -36,8 +36,8 @@ export interface HeatmapOpts {
 }
 
 export function renderHeatmap(r: TeacherReport, opts: HeatmapOpts = {}): string {
-  const W = 1000;
-  const padL = 104;
+  const W = 820;
+  const padL = 96;
   const padR = 18;
   const plotW = W - padL - padR;
 
@@ -47,18 +47,18 @@ export function renderHeatmap(r: TeacherReport, opts: HeatmapOpts = {}): string 
   const x = (t: number): number => padL + (Math.min(t, tEnd) / tEnd) * plotW;
 
   const showCurve = !!opts.curve && opts.curve.points.length >= 2;
-  const curveH = showCurve ? 84 : 0;
+  const curveH = showCurve ? 96 : 0;
   const gapAbove = showCurve ? 10 : 0;
   const hotRowY = curveH + gapAbove;
   const hotRowH = 14;
   const bandY = hotRowY + hotRowH + 4;
   const bandH = 16;
   const gridY = bandY + bandH + 6;
-  const rowH = 20;
+  const rowH = 32;
   const rows = r.grid.rows;
   const gridH = (rows.length + 1) * rowH;
   const axisY = gridY + gridH + 30;
-  const H = axisY + 8;
+  const H = axisY + 24;
 
   let out = '';
 
@@ -70,7 +70,7 @@ export function renderHeatmap(r: TeacherReport, opts: HeatmapOpts = {}): string 
     const line = pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${n(x(p.t))},${n(y(p.v))}`).join(' ');
     const area = `${line} L${n(x(pts.at(-1)?.t ?? 0))},${curveH} L${n(x(pts[0]?.t ?? 0))},${curveH} Z`;
     out += `<path d="${area}" fill="url(#tgrad)"/>`;
-    out += `<path d="${line}" fill="none" stroke="#8b91a3" stroke-width="1.2" opacity=".85"/>`;
+    out += `<path d="${line}" fill="none" stroke="#2469F3" stroke-width="1.6" stroke-opacity=".9"/>`;
     out += `<text x="${padL - 8}" y="12" class="axis" text-anchor="end">${Math.round(vMax / 1.25)} 人</text>`;
     out += `<text x="${padL}" y="12" class="axis">在线人数（真实曲线 · 峰值 ${Math.round(Math.max(...pts.map((p) => p.v)))} 人${r.curveGate.usable ? '' : ' · 仅展示'}）</text>`;
     // 峰值线
@@ -93,7 +93,7 @@ export function renderHeatmap(r: TeacherReport, opts: HeatmapOpts = {}): string 
   r.chapters.forEach((c, i) => {
     const x1 = x(c.t0);
     const w = Math.max(1, x(c.t1) - x1);
-    const shade = i % 2 === 0 ? '#232838' : '#1c2130';
+    const shade = i % 2 === 0 ? '#E7EEFA' : '#EFF4FC';
     out += `<rect x="${n(x1)}" y="${bandY}" width="${n(w)}" height="${bandH}" fill="${shade}"><title>${esc(c.topic)} · ${c.minutes}min · ${c.cards} 张</title></rect>`;
     if (w > 64) {
       out += `<text x="${n(x1 + 5)}" y="${bandY + 11}" class="bandlabel">${esc(c.topic.slice(0, Math.floor(w / 12)))}</text>`;
@@ -120,11 +120,11 @@ export function renderHeatmap(r: TeacherReport, opts: HeatmapOpts = {}): string 
       const x1 = x(bi * B);
       const w = Math.max(1, x((bi + 1) * B) - x1 - 1.2);
       if (c === 0) {
-        out += `<rect x="${n(x1)}" y="${yy + 2}" width="${n(w)}" height="${rowH - 4}" fill="#171a22"/>`;
+        out += `<rect x="${n(x1)}" y="${yy + 2}" width="${n(w)}" height="${rowH - 4}" rx="2" fill="#EDF2FA"/>`;
         return;
       }
-      const a = 0.22 + 0.78 * Math.pow(c / cellMax, 0.55);
-      out += `<rect x="${n(x1)}" y="${yy + 2}" width="${n(w)}" height="${rowH - 4}" fill="${TYPE_COLOR[row.type]}" fill-opacity="${a.toFixed(2)}" class="cell" data-t="${bi * B}" data-type="${row.type}"><title>${fmtTime(bi * B)} · ${TYPE_LABEL[row.type]} ${c} 张</title></rect>`;
+      const a = 0.18 + 0.82 * Math.pow(c / cellMax, 0.55);
+      out += `<rect x="${n(x1)}" y="${yy + 2}" width="${n(w)}" height="${rowH - 4}" rx="2" fill="${TYPE_COLOR[row.type]}" fill-opacity="${a.toFixed(2)}" class="cell" data-t="${bi * B}" data-type="${row.type}"><title>${fmtTime(bi * B)} · ${TYPE_LABEL[row.type]} ${c} 张</title></rect>`;
     });
   });
 
@@ -133,18 +133,18 @@ export function renderHeatmap(r: TeacherReport, opts: HeatmapOpts = {}): string 
     const yy = gridY + rows.length * rowH;
     const maxTotal = Math.max(1, ...r.grid.totals);
     const sum = r.grid.totals.reduce((a, b) => a + b, 0);
-    out += `<rect x="10" y="${yy + 6}" width="7" height="7" rx="2" fill="#8b91a3"/>`;
+    out += `<rect x="10" y="${yy + 6}" width="7" height="7" rx="2" fill="#586E90"/>`;
     out += `<text x="22" y="${yy + 14}" class="rowlabelT">合计</text>`;
     out += `<text x="${padL - 8}" y="${yy + 14}" class="rowtotal" text-anchor="end">${sum}</text>`;
     r.grid.totals.forEach((c, bi) => {
       const x1 = x(bi * B);
       const w = Math.max(1, x((bi + 1) * B) - x1 - 1.2);
       if (!c) {
-        out += `<rect x="${n(x1)}" y="${yy + 2}" width="${n(w)}" height="${rowH - 4}" fill="#12141a"/>`;
+        out += `<rect x="${n(x1)}" y="${yy + 2}" width="${n(w)}" height="${rowH - 4}" rx="2" fill="#E4EBF7"/>`;
         return;
       }
-      const a = 0.2 + 0.8 * Math.pow(c / maxTotal, 0.6);
-      out += `<rect x="${n(x1)}" y="${yy + 2}" width="${n(w)}" height="${rowH - 4}" fill="#e8e9ee" fill-opacity="${a.toFixed(2)}" class="cell" data-t="${bi * B}" data-type="all"><title>${fmtTime(bi * B)} · 共 ${c} 张</title></rect>`;
+      const a = 0.16 + 0.7 * Math.pow(c / maxTotal, 0.6);
+      out += `<rect x="${n(x1)}" y="${yy + 2}" width="${n(w)}" height="${rowH - 4}" rx="2" fill="#122348" fill-opacity="${a.toFixed(2)}" class="cell" data-t="${bi * B}" data-type="all"><title>${fmtTime(bi * B)} · 共 ${c} 张</title></rect>`;
     });
   }
 
@@ -161,12 +161,12 @@ export function renderHeatmap(r: TeacherReport, opts: HeatmapOpts = {}): string 
     out += `<line x1="${n(x(t))}" y1="${gridY + gridH}" x2="${n(x(t))}" y2="${gridY + gridH + 4}" class="tick"/>`;
     out += `<text x="${n(x(t))}" y="${axisY}" class="axis" text-anchor="middle">${fmtTime(t)}</text>`;
   }
-  out += `<text x="${W - padR}" y="${axisY}" class="axis" text-anchor="end">每格 ${B / 60} 分钟</text>`;
+  out += `<text x="${W - padR}" y="${axisY + 14}" class="axis" text-anchor="end">每格 ${B / 60} 分钟</text>`;
 
   return `<svg viewBox="0 0 ${W} ${H}" class="heatmap" role="img" aria-label="观众记住卡热力图">
     <defs><linearGradient id="tgrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#8b91a3" stop-opacity="0.28"/>
-      <stop offset="100%" stop-color="#8b91a3" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#2469F3" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#2469F3" stop-opacity="0"/>
     </linearGradient></defs>
     ${out}
   </svg>`;

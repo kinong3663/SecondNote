@@ -74,6 +74,8 @@ interface VodSession {
 
 let sessions: VodSession[] = [];
 let searchQuery = '';
+/** 匿名 ID → 「学生 1/2/3」，比一串 UUID 好读 */
+let viewerLabels = new Map<string, string>();
 
 async function getJson<T>(url: string): Promise<T | null> {
   try {
@@ -111,6 +113,14 @@ function studentUrl(t = 0): string {
 
 function applyLive(rep: TeacherReport, notes: NotesResponse | null): void {
   report = rep;
+  viewerLabels = new Map();
+  if (notes) {
+    for (const n of notes.notes) {
+      if (!viewerLabels.has(n.visitorId)) {
+        viewerLabels.set(n.visitorId, `学生 ${viewerLabels.size + 1}`);
+      }
+    }
+  }
   cardFile = notes
     ? {
         sessionId: rep.sessionId,
@@ -198,12 +208,12 @@ function renderSessionRow(s: VodSession): string {
   const date = s.creationTime ? s.creationTime.slice(2, 10) : '';
   const minutes = s.duration ? Math.round(s.duration / 60) : 0;
   const badge = s.cards
-    ? `<span class="vsCards">${s.cards} 张</span>`
-    : '<span class="vsCards vsCards--zero">暂无卡片</span>';
-  return `<button class="vsess" data-vk="${esc(s.videoKey)}" title="${esc(s.title)}">
-    <span class="vsTop"><span class="vsDate">${esc(date)}</span>${badge}</span>
-    <span class="vsTitle">${esc(s.title)}</span>
-    <span class="vsMeta">${minutes} 分钟${s.viewers ? ` · ${s.viewers} 人` : ''}</span>
+    ? `<span class="nBadge">${s.cards} 张</span>`
+    : '<span class="nBadge nBadge--zero">暂无</span>';
+  return `<button class="nItem" data-vk="${esc(s.videoKey)}" title="${esc(s.title)}">
+    <span class="nTop"><span class="nDate">${esc(date)}</span>${badge}</span>
+    <span class="nTitle">${esc(s.title)}</span>
+    <span class="nMeta">${minutes} 分钟${s.viewers ? ` · ${s.viewers} 位学生` : ''}</span>
   </button>`;
 }
 
@@ -216,135 +226,168 @@ function renderSessionList(): string {
     .sort((a, b) => String(b.creationTime).localeCompare(String(a.creationTime)));
 
   if (!list.length) {
-    return `<p class="vsEmpty">${q ? '未搜索到对应课程' : '没有其它点播课程'}</p>`;
+    return `<p class="nEmpty">${q ? '未搜索到对应课程' : '没有其它点播课程'}</p>`;
   }
   return list.map(renderSessionRow).join('');
 }
 
-function renderSidebar(): string {
+function renderNav(): string {
   const r = report!;
   const current = sessions.find((s) => s.videoKey === currentVk);
   const date = current?.creationTime ? current.creationTime.slice(2, 10) : '';
   const minutes = Math.round(r.scale.durationSec / 60);
 
-  return `<div class="vlistHead"><span>当前课程</span></div>
-    <button class="vsess vsess--current on" data-live-refresh="1" title="点一下手动刷新">
-      <span class="vsTop"><span class="vsDate">${esc(date)}${date ? ' · ' : ''}每 ${LIVE_POLL_MS / 1000} 秒刷新</span><span class="vsCards">${r.scale.cards} 张</span></span>
-      <span class="vsTitle">${esc(r.title || current?.title || currentVk)}</span>
-      <span class="vsMeta">${minutes} 分钟 · ${r.scale.viewers} 人参与</span>
+  return `<aside class="nav">
+    <div class="navHead"><span>当前课程</span></div>
+    <button class="courseCard" data-live-refresh="1" title="点一下手动刷新">
+      <span class="ccTop">
+        <span class="ccDate">${esc(date)}</span>
+        <span class="ccBadge">${r.scale.cards} 张秒记</span>
+      </span>
+      <span class="ccTitle">${esc(r.title || current?.title || currentVk)}</span>
+      <span class="ccMeta">${minutes} 分钟 · ${r.scale.viewers} 位学生</span>
+      <span class="ccLive"><i></i>每 ${LIVE_POLL_MS / 1000} 秒自动刷新</span>
     </button>
 
-    <div class="vsSearchWrap">
-      <input id="vs-search" class="vsSearch" type="search" placeholder="搜索课程名…"
+    <div class="search">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>
+      <input id="vs-search" class="searchInput" type="search" placeholder="搜索课程名"
         autocomplete="off" value="${esc(searchQuery)}" />
     </div>
 
-    <div class="vlistHead"><span>全部点播</span><span class="vlistCount">${sessions.length}</span></div>
-    <div class="vlist" id="vs-list">${renderSessionList()}</div>`;
+    <div class="navHead"><span>全部点播</span><span class="count">${sessions.length}</span></div>
+    <div class="navList" id="vs-list">${renderSessionList()}</div>
+  </aside>`;
 }
 
-function renderBadges(): string {
+function renderChips(): string {
   const r = report!;
-  const cards = r.source.cards === 'sim' ? '<span class="bdg bdgSim">观众卡片：模拟</span>' : '<span class="bdg bdgReal">观众卡片：真实</span>';
-  const ch = r.source.chapters === 'none'
-    ? '<span class="bdg bdgOff">章节：无（未生成 AI 大纲）</span>'
-    : '<span class="bdg bdgReal">章节：官方 AI 大纲</span>';
-  const cv = r.source.curve === 'none'
-    ? '<span class="bdg bdgOff">人数曲线：无</span>'
-    : '<span class="bdg bdgReal">人数曲线：真实</span>';
-  const ai = r.engine.narrative === 'offline-model'
-    ? '<span class="bdg bdgAI">AI 解读：离线模型</span>'
-    : '<span class="bdg bdgOff">AI 解读：模板</span>';
-  return cards + ch + cv + ai;
+  const cards = r.source.cards === 'sim'
+    ? '<span class="chip"><i></i>卡片：模拟数据</span>'
+    : '<span class="chip chip--real"><i></i>卡片：学生实时上报</span>';
+  const chapters = r.source.chapters === 'none'
+    ? '<span class="chip"><i></i>章节：未生成</span>'
+    : '<span class="chip chip--real"><i></i>章节：官方 AI 大纲</span>';
+  const nar = r.engine.narrative === 'offline-model'
+    ? '<span class="chip chip--real"><i></i>解读：离线模型</span>'
+    : '<span class="chip"><i></i>解读：规则模板</span>';
+  return cards + chapters + nar;
 }
 
-function renderKpis(): string {
+function renderStats(): string {
   const r = report!;
-  const it: [string, string, string][] = [
-    ['参与的观众', `${r.scale.viewers}`, '人'],
-    ['记住卡', `${r.scale.cards}`, `张 · 人均 ${r.scale.perViewer}`],
-    ['卡片密度', `${r.scale.perMin}`, '张/分钟'],
-    ['内容章节', `${r.scale.chapters}`, '段'],
-    ['时长', `${r.scale.durationMin}`, '分钟'],
-    ['人数峰值', r.scale.peak == null ? '—' : `${r.scale.peak}`, r.curveGate.usable ? '人 · 可交叉判断' : r.source.curve === 'none' ? '人 · 本场无人数数据' : '人 · 仅展示'],
+  const items: [string, string, string][] = [
+    ['参与学生', `${r.scale.viewers}`, '人'],
+    ['秒记总数', `${r.scale.cards}`, '张'],
+    ['人均秒记', `${r.scale.perViewer}`, '张/人'],
+    ['秒记密度', `${r.scale.perMin}`, '张/分钟'],
   ];
-  return `<div class="kpis">${it
-    .map(([k, v, u]) => `<div class="kpi"><div class="kpiK">${k}</div><div class="kpiV">${v}<i>${u}</i></div></div>`)
+  return `<div class="stats">${items
+    .map(([k, v, u]) => `<div class="stat"><div class="statK">${k}</div><div class="statV">${v}<i>${u}</i></div></div>`)
     .join('')}</div>`;
+}
+
+/** 秒记类型分布（右侧洞察用） */
+function renderDist(): string {
+  const r = report!;
+  const byType = r.scale.byType ?? {};
+  const list = (['key', 'question', 'step', 'case', 'fix'] as CardType[]).filter(
+    (t) => (byType[t] ?? 0) > 0,
+  );
+  const max = Math.max(1, ...list.map((t) => byType[t] ?? 0));
+  const rows = list
+    .map((t) => {
+      const n = byType[t] ?? 0;
+      return `<div class="distRow">
+        <span class="distLabel">${TYPE_LABEL[t]}</span>
+        <span class="distBar"><i style="width:${Math.round((n / max) * 100)}%;background:${TYPE_COLOR[t]}"></i></span>
+        <span class="distVal">${n}</span>
+      </div>`;
+    })
+    .join('');
+  return `<section class="panel">
+    <div class="panelHead"><h2>秒记类型分布</h2><span class="panelHint">共 ${r.scale.cards} 张</span></div>
+    <div class="dist">${rows || '<p class="empty">还没有秒记</p>'}</div>
+  </section>`;
 }
 
 function renderFinding(f: TeacherFinding): string {
   const s = SPEC[f.level] ?? SPEC.low;
-  const ev = f.evidence.map((e) => `<span class="ev"><b>${esc(e.k)}</b>${esc(e.v)}</span>`).join('');
-  const act = f.action ? `<div class="fact"><span class="factK">下一步</span>${esc(f.action)}</div>` : '';
+  const ev = f.evidence.map((e) => `<span><b>${esc(e.k)}</b>${esc(e.v)}</span>`).join('');
   return `<article class="finding ${s.cls}" data-fid="${esc(f.id)}">
-    <div class="fhead">
-      <span class="lvl">${s.level}</span>
-      <h3>${esc(f.title)}</h3>
-      <span class="ftime">${fmtTime(f.t0)}–${fmtTime(f.t1)}</span>
+    <div class="fHead">
+      <span class="fLevel">${s.level}</span>
+      <span class="fTime">${fmtTime(f.t0)}–${fmtTime(f.t1)}</span>
+      <h3 class="fTitle">${esc(f.title)}</h3>
     </div>
-    <div class="evs">${ev}</div>
-    <p class="fjudge">${esc(f.judgment)}</p>
-    ${act}
-    <div class="facts">
-      <button class="mini" data-range="${f.t0},${f.t1}" data-fid="${esc(f.id)}">在图上看这段</button>
-      <a class="mini ghost" href="${studentUrl(f.t0)}">去学生端看这段</a>
+    <div class="fEv">${ev}</div>
+    <p class="fJudge">${esc(f.judgment)}</p>
+    <div class="fActs">
+      <button class="btn btn--tiny" data-range="${f.t0},${f.t1}" data-fid="${esc(f.id)}">在热力图上定位</button>
+      <a class="btn btn--tiny" href="${studentUrl(f.t0)}">去学生端看这段</a>
     </div>
   </article>`;
 }
 
-function renderAI(): string {
+function renderInsight(): string {
   const r = report!;
   if (!r.verdict) return '';
   const plan = (r.plan ?? []).map((p, i) => `<li><span class="pn">${i + 1}</span>${esc(p)}</li>`).join('');
-  const rel = r.reliability.level === 'ok' ? '' : `<div class="warn">${esc(r.reliability.reason)}</div>`;
-  return `<div class="panel aiPanel">
-    <div class="phead">
-      <h2>AI 复盘结论</h2>
-      <span class="pm">${r.engine.narrative === 'offline-model' ? '离线模型生成 · 数字由规则引擎提供' : '模板生成'}</span>
+  const lowSample = r.reliability.level !== 'ok'
+    ? `<div class="notice">${esc(r.reliability.reason)}</div>`
+    : '';
+  return `<section class="panel panel--insight">
+    <div class="panelHead">
+      <h2>复盘结论</h2>
+      <span class="tag">${r.engine.narrative === 'offline-model' ? '离线模型' : '规则生成'}</span>
     </div>
     <p class="verdict">${esc(r.verdict)}</p>
-    ${rel}
-    ${plan ? `<div class="planT">下一期就改这三件</div><ol class="plan">${plan}</ol>` : ''}
-  </div>`;
+    ${lowSample}
+    ${plan ? `<div class="planT" style="font-size:11px;color:var(--ink-3);margin:12px 0 8px;">下一步</div><ol class="plan" style="margin:0;padding-left:18px;font-size:12.3px;line-height:1.75;color:var(--ink-2)">${plan}</ol>` : ''}
+  </section>`;
 }
 
-/** 匿名观众 ID 通常是 UUID，列表里只显示尾部 4 位，避免撑破卡片 */
-const shortViewer = (id: string): string => (id.length > 10 ? `…${id.slice(-4)}` : id);
+/** 匿名观众 ID → 「学生 N」，列表里只显示这个 */
+const viewerLabel = (id: string): string => viewerLabels.get(id) ?? '学生';
 
 function renderCard(c: MemoryCard): string {
-  const note = c.note ? `<div class="cnote">${esc(c.note)}</div>` : '';
-  return `<div class="mcard" style="border-left-color:${TYPE_COLOR[c.type]}">
-    <div class="cm">
-      <span class="ct">${fmtTime(c.t)}</span>
-      <span class="cx" style="color:${TYPE_COLOR[c.type]}">${TYPE_LABEL[c.type]}</span>
-      <span class="cv">${esc(shortViewer(c.viewer))}</span>
+  const sub = c.note ? `<div class="mSub">${esc(c.note)}</div>` : '';
+  return `<article class="mcard" style="border-left-color:${TYPE_COLOR[c.type]}">
+    <div class="mHead">
+      <span class="mTime">${fmtTime(c.t)}</span>
+      <span class="mType" style="color:${TYPE_COLOR[c.type]};background:${TYPE_COLOR[c.type]}14">${TYPE_LABEL[c.type]}</span>
+      <span class="mViewer">${esc(viewerLabel(c.viewer))}</span>
     </div>
-    <div class="cq">${esc(c.quote)}</div>
-    ${note}
-  </div>`;
+    <div class="mQuote">${esc(c.quote)}</div>
+    ${sub}
+  </article>`;
 }
 
 function renderCards(): string {
   const r = report!;
   const all = cardFile?.cards ?? [];
-  const list = (sel ? all.filter((c) => c.t >= sel!.t0 && c.t < sel!.t1) : all).slice().sort((a, b) => a.t - b.t);
+  const list = (sel ? all.filter((c) => c.t >= sel!.t0 && c.t < sel!.t1) : all)
+    .slice()
+    .sort((a, b) => a.t - b.t);
   const head = sel
-    ? `<div class="phead"><h2>卡片流</h2><span class="pm">${esc(sel.label)} · ${list.length} 张</span><button class="mini" data-clear="1">看全部 ${all.length} 张</button></div>`
-    : `<div class="phead"><h2>卡片流</h2><span class="pm">全部 ${list.length} 张 · 按时间排序 · 点热力格可筛选</span></div>`;
+    ? `<div class="panelHead"><h2>学生秒记</h2><span class="panelHint">${esc(sel.label)} · ${list.length} 张</span>
+       <button class="btn btn--tiny" data-clear="1">看全部 ${all.length} 张</button></div>`
+    : `<div class="panelHead"><h2>学生秒记</h2><span class="panelHint">共 ${list.length} 张 · 按视频时间排序 · 点热力格可筛选</span></div>`;
   const body = list.length
-    ? `<div class="cgrid">${list.map(renderCard).join('')}</div>`
-    : `<div class="empty">这段没有卡片</div>`;
+    ? `<div class="cards">${list.map(renderCard).join('')}</div>`
+    : `<p class="empty">这段区间还没有秒记</p>`;
+
   const cnt = r.scale.byType;
   const legend = (['question', 'fix', 'step', 'key', 'case'] as CardType[])
     .filter((t) => (cnt[t] ?? 0) > 0)
-    .map((t) => `<span class="lgd"><i style="background:${TYPE_COLOR[t]}"></i>${TYPE_LABEL[t]} ${cnt[t]}</span>`)
+    .map((t) => `<span class="lgItem"><i class="lgDot" style="background:${TYPE_COLOR[t]}"></i>${TYPE_LABEL[t]} ${cnt[t]}</span>`)
     .join('');
-  return `<div class="panel">
+
+  return `<section class="panel">
     ${head}
-    <div class="lgds">${legend}</div>
+    <div class="legend">${legend || '<span class="panelHint">还没有任何秒记</span>'}</div>
     ${body}
-  </div>`;
+  </section>`;
 }
 
 function render(): void {
@@ -356,58 +399,72 @@ function render(): void {
   const activeEl = document.activeElement as HTMLElement | null;
   const searchFocused = activeEl?.id === 'vs-search';
   const caret = searchFocused ? (activeEl as HTMLInputElement).selectionStart : null;
+  const minutes = Math.round(r.scale.durationSec / 60);
 
   APP!.innerHTML = `
-  <header class="top">
-    <div class="brand">ReLive<span class="brandSub">教师端 · 观众记住卡复盘</span></div>
-    <div class="topMeta">${renderBadges()}</div>
-  </header>
-
-  <div class="tlayout">
-    <aside class="tleft">${renderSidebar()}</aside>
-    <main class="tmain">
-      <div class="thead">
-        <h1>${esc(r.title || r.sessionId)}</h1>
-        <div class="thmeta">
-          <span class="mono">${esc(r.videoKey || r.sessionId)}</span>
-          <span>${fmtTime(r.scale.durationSec)}</span>
-          <a class="backLink" href="${studentUrl(0)}">← 回到学生点播</a>
-        </div>
+  <div class="app">
+    <header class="topbar">
+      <div class="brandRow">
+        <span class="brandMark" aria-hidden="true"></span>
+        <span class="brandName">ReLive</span>
+        <span class="brandSub">秒记卡 · 教师端工作台</span>
       </div>
-
-      <div class="note"${r.scale.cards === 0 ? ' hidden' : ''}>${esc(r.reliability.reason)}</div>
-
-      ${renderKpis()}
-
-      <div class="panel">
-        <div class="phead">
-          <h2>记住卡热力图</h2>
-          <span class="pm">横向=时间 · 纵向=卡片类型 · 颜色深浅=标记人数</span>
-        </div>
-        <div class="heatwrap" id="heat">${svg}</div>
+      <div class="topRight">
+        ${renderChips()}
+        <a class="btn btn--primary" href="${studentUrl(0)}">回到学生点播</a>
       </div>
+    </header>
 
-      <div class="twocol">
-        <div class="colL">
-          ${renderAI()}
-          <div class="panel">
-            <div class="phead"><h2>诊断 ${r.findings.length} 条</h2><span class="pm">${highN} 条要处理 · 每条都带证据</span></div>
-            <div class="findings">${findings}</div>
+    <div class="shell">
+      ${renderNav()}
+
+      <main class="work">
+        <section class="head">
+          <div class="eyebrow">ON-DEMAND COURSE REVIEW</div>
+          <h1 class="headTitle">${esc(r.title || r.sessionId)}</h1>
+          <div class="headMeta">
+            <span class="mono">${esc(r.videoKey || r.sessionId)}</span>
+            <span>${minutes} 分钟</span>
+            <span>${r.scale.cards} 张秒记</span>
+            <span>${r.scale.viewers} 位学生</span>
           </div>
-        </div>
-        <div class="colR">${renderCards()}</div>
-      </div>
+        </section>
 
-      <footer class="tfoot">
-        数据来源：观众端「记一下」实时上报（<code>POST /api/notes</code>）→
-        聚合 <code>GET /api/teacher/&lt;videoKey&gt;</code> ·
-        上送格式：<code>data/contract/cards/_schema.json</code>
-      </footer>
-    </main>
+        ${renderStats()}
+
+        <section class="panel">
+          <div class="panelHead">
+            <h2>学生标记热力图</h2>
+            <span class="panelHint">纵向为秒记类型，颜色越深表示标记越多 · 点任意格子可筛选</span>
+          </div>
+          <div class="heatwrap" id="heat">${svg}</div>
+        </section>
+
+        ${renderCards()}
+
+        <p class="footer">
+          数据来源：学生端「记一下」实时上报 <code>POST /api/notes</code> ·
+          聚合 <code>GET /api/teacher/&lt;videoKey&gt;</code> ·
+          每 ${LIVE_POLL_MS / 1000} 秒自动刷新
+        </p>
+      </main>
+
+      <aside class="rail">
+        ${renderInsight()}
+        <section class="panel">
+          <div class="panelHead">
+            <h2>值得注意的段落</h2>
+            <span class="panelHint">${r.findings.length} 条 · ${highN} 条建议处理</span>
+          </div>
+          <div class="findings">${findings || '<p class="empty">还没有足够的秒记来形成结论</p>'}</div>
+        </section>
+        ${renderDist()}
+      </aside>
+    </div>
   </div>`;
 
   // 侧栏列表很长，把当前选中的那条滚到可见位置
-  const active = APP!.querySelector('.vsess.on');
+  const active = APP!.querySelector('.nItem.is-active');
   if (active) active.scrollIntoView({ block: 'nearest' });
 
   if (searchFocused) {
