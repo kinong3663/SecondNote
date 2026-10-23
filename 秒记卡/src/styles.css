@@ -1463,14 +1463,23 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 18px;
   width: min(1480px, 100%);
   min-height: 84px;
   margin: 0 auto;
-  color: var(--subtle);
-  font-family: var(--font-mono);
-  font-size: 8px;
-  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.01em;
   border-top: 1px solid var(--line);
+}
+
+/* 英文标识保留等宽字体的编辑感，中文那句用正文字体，读起来才不挤 */
+.site-footer > span:first-child {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  color: var(--subtle);
 }
 
 .toast {
@@ -1917,6 +1926,11 @@ a {
 }
 
 
-.site-footer__teacher { color: var(--accent); text-decoration: none; }
+.site-footer__teacher {
+  color: var(--accent-bright);
+  text-decoration: none;
+  font-size: 12.5px;
+  white-space: nowrap;
+}
 .site-footer__teacher:hover { text-decoration: underline; }
 
