@@ -88,6 +88,39 @@ GET https://api.polyv.net/v2/video/{userid}/srt/list?vid=&ptime=&sign=
 | 教师端 → 学生端 | 同一视频 + 同一秒 | `/?channelId=…&source=<record\|vod>&id=<vid>&t=<秒>`（`t` 会被秒记卡播放器自动 seek） |
 | 学生端 → 教师端 | 同一视频的复盘 | `/teacher?channelId=…&vk=<source>:<videoId>` |
 
+## AI 复盘总结（手动生成、按课程缓存）
+
+**分工不变**：数字全部由规则引擎算，模型只负责把数字翻译成老师能执行的话。
+
+- **手动触发**：只有老师点「用 AI 生成解读」才会调用模型，轮询不消耗 token
+- **按课程缓存**：结果落在 `work/summaries/<videoKey>.json`，再打开直接读缓存；
+  点「重新生成」才重算（会覆盖）
+- **数字白名单校验**：模型输出里只要出现证据中没有的数字，判定为编造，直接拒绝落盘并回落到规则模板
+- 缓存里记了生成时的秒记数量；当前数量和它不一致时，界面会提示「建议重新生成」
+
+### 配置（`秒记卡/.env.local`）
+
+```dotenv
+# 默认 DeepSeek
+LLM_PROVIDER=deepseek
+LLM_MODEL=deepseek-chat
+LLM_API_KEY=sk-...
+```
+
+不写 `LLM_PROVIDER` 时：有 `LLM_API_KEY` / `DEEPSEEK_API_KEY` 就用 DeepSeek，
+否则自动退到 `DASHSCOPE_API_KEY`（通义千问兼容模式，`qwen-plus`）。
+本机目前只有 DashScope 的 key，所以 `.env.local` 里配的是 DashScope；
+换成 DeepSeek 只需要改这三行，代码不用动。
+
+### 接口
+
+| 方法 | 路径 | 说明 |
+|---|---|---|
+| `GET` | `/api/teacher/:videoKey/summary` | 读缓存 + 返回模型是否就绪 |
+| `POST` | `/api/teacher/:videoKey/summary?force=1` | 生成（或强制重算），返回 `{ok, summary, provider}`；失败返回原因 |
+
+失败原因会原样显示在洞察栏，例如「模型引用了证据里没有的数字：103」「未配置模型 key」。
+
 ## 构建与部署
 
 教师端是独立构建的（vanilla TS，产物挂在同一个 Express 上）：

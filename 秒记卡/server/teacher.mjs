@@ -232,6 +232,8 @@ export function aggregate({ notes, chapters = [], durationSec, title = '', video
   const findings = [];
   for (const hs of hotspots) {
     const dom = Object.entries(hs.share).sort((a, b) => b[1] - a[1])[0]?.[0] ?? 'key';
+    // 存疑类已经由下面的 fix-1 汇总卡覆盖，这里不再重复出一条
+    if (dom === 'fix') continue;
     const kindMap = { question: 'hotspot-question', fix: 'hotspot-fix', step: 'hotspot-step', key: 'hotspot-key', case: 'hotspot-case' };
     findings.push({
       id: `${hs.id}-${dom}`,

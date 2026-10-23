@@ -13,6 +13,8 @@ import { fetchOutlineChapters, fetchSubtitleCues, fetchVodSubtitleCues } from '.
 import { fetchVodVideo, fetchVodVideos } from './vod.mjs';
 import { appendNote, countNotesByVideo, listNotes, NOTE_TYPES } from './notes.mjs';
 import { aggregate } from './teacher.mjs';
+import { describeProvider } from './llm.mjs';
+import { generateSummary, readSummary } from './summary.mjs';
 
 const app = express();
 const port = Number(process.env.PORT || 8787);
@@ -302,14 +304,26 @@ app.get('/api/vod-sessions', async (request, response) => {
 app.get('/api/teacher/:videoKey', async (request, response) => {
   const channelId = String(request.query.channelId || process.env.POLYV_DEMO_CHANNEL_ID || '');
   const videoKey = String(request.params.videoKey);
+
+  let payload;
+  try {
+    payload = await buildTeacherPayload(videoKey, channelId);
+  } catch (error) {
+    response.status(500).json({ error: error.message });
+    return;
+  }
+  response.json(payload.report);
+});
+
+/** 教师端报告 + 原始秒记（AI 总结要复用同一份证据） */
+async function buildTeacherPayload(videoKey, channelId) {
   const [, videoId] = videoKey.split(':');
 
   let notes = [];
   try {
     notes = await listNotes(channelId, videoKey);
   } catch (error) {
-    response.status(500).json({ error: error.message });
-    return;
+    throw new Error(`读取秒记失败：${error.message}`);
   }
 
   let chapters = [];
@@ -368,7 +382,33 @@ app.get('/api/teacher/:videoKey', async (request, response) => {
     sessionId,
     jumpUrl,
   });
-  response.json(report);
+  return { report, notes };
+}
+
+/* ---------------- AI 复盘总结（手动触发，按视频缓存） ---------------- */
+
+app.get('/api/teacher/:videoKey/summary', async (request, response) => {
+  const videoKey = String(request.params.videoKey);
+  const cached = await readSummary(videoKey);
+  response.json({ provider: describeProvider(), summary: cached });
+});
+
+app.post('/api/teacher/:videoKey/summary', async (request, response) => {
+  const channelId = String(request.query.channelId || process.env.POLYV_DEMO_CHANNEL_ID || '');
+  const videoKey = String(request.params.videoKey);
+  const force = request.query.force === '1' || request.body?.force === true;
+
+  try {
+    const { report, notes } = await buildTeacherPayload(videoKey, channelId);
+    if (!report.scale.cards) {
+      response.status(400).json({ ok: false, code: 'no-cards', reason: '这场还没有学生秒记，先生成也无从分析' });
+      return;
+    }
+    const result = await generateSummary({ report, cards: notes, videoKey, force });
+    response.status(result.ok ? 200 : 422).json(result);
+  } catch (error) {
+    response.status(500).json({ ok: false, code: 'error', reason: error.message });
+  }
 });
 
 app.post('/api/transcript', async (request, response) => {

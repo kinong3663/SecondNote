@@ -426,3 +426,15 @@ code, .mono { font-family: var(--num); }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .headTitle { font-size: 24px; }
 }
+
+/* ---- AI ???? ---- */
+.aiActions { margin: 12px 0 4px; }
+.aiActionsK { font-size: 11px; color: var(--ink-3); margin-bottom: 6px; letter-spacing: 0.5px; }
+.aiActions ol { margin: 0; padding-left: 18px; font-size: 12.3px; line-height: 1.75; color: var(--ink); }
+.aiActions li + li { margin-top: 4px; }
+.aiMeta { font-size: 10.5px; color: var(--ink-3); margin-top: 10px; line-height: 1.7; }
+.aiFoot { display: flex; align-items: center; gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.aiHint { font-size: 10.5px; color: var(--ink-3); }
+.notice--error { color: #a8362f; background: rgba(217, 83, 79, 0.07); border-color: rgba(217, 83, 79, 0.2); }
+.fActions { font-size: 11.5px; line-height: 1.6; color: var(--ink); background: rgba(36, 105, 243, 0.05); border-radius: 8px; padding: 6px 9px; margin-bottom: 9px; }
+.fActionK { font-size: 10px; color: var(--blue-deep); margin-right: 6px; }

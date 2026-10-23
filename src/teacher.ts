@@ -77,6 +77,23 @@ let searchQuery = '';
 /** 匿名 ID → 「学生 1/2/3」，比一串 UUID 好读 */
 let viewerLabels = new Map<string, string>();
 
+/* ---- AI 复盘总结：手动触发、按视频缓存，不随轮询消耗 token ---- */
+interface AiSummary {
+  videoKey: string;
+  generatedAt: string;
+  provider: string;
+  model: string;
+  cardsAtGeneration: number;
+  verdict: string;
+  findings: Record<string, { judgment?: string; action?: string }>;
+  nextActions: string[];
+}
+
+let aiSummary: AiSummary | null = null;
+let aiProvider: { name: string; model: string; ready: boolean } | null = null;
+let aiLoading = false;
+let aiError = '';
+
 async function getJson<T>(url: string): Promise<T | null> {
   try {
     const r = await fetch(url);
@@ -144,14 +161,22 @@ function applyLive(rep: TeacherReport, notes: NotesResponse | null): void {
 async function loadLive(vk: string): Promise<void> {
   currentVk = vk;
   const q = encodeURIComponent(vk);
-  const [rep, notes] = await Promise.all([
+  const [rep, notes, summaryRes] = await Promise.all([
     getJson<TeacherReport>(`/api/teacher/${q}?channelId=${LIVE_CHANNEL}`),
     getJson<NotesResponse>(`/api/notes/${LIVE_CHANNEL}/${q}`),
+    getJson<{ provider: { name: string; model: string; ready: boolean }; summary: AiSummary | null }>(
+      `/api/teacher/${q}/summary?channelId=${LIVE_CHANNEL}`,
+    ),
   ]);
   if (!rep) {
     APP!.innerHTML = `<p class="err">载入失败：/api/teacher/${esc(vk)} —— 确认 npm start 已经起来（8787）。</p>`;
     return;
   }
+  // 换课程时清掉上一课的 AI 解读，避免串味
+  aiSummary = summaryRes?.summary ?? null;
+  aiProvider = summaryRes?.provider ?? null;
+  aiError = '';
+  aiLoading = false;
   applyLive(rep, notes);
   sel = null;
   render();
@@ -159,6 +184,34 @@ async function loadLive(vk: string): Promise<void> {
   liveTimer = window.setInterval(() => {
     void refreshLive(vk);
   }, LIVE_POLL_MS);
+}
+
+/** 手动触发一次 AI 总结（会消耗 token，只在老师点击时发生） */
+async function generateAi(vk: string, force = false): Promise<void> {
+  if (aiLoading) return;
+  aiLoading = true;
+  aiError = '';
+  render();
+  try {
+    const res = await fetch(
+      `/api/teacher/${encodeURIComponent(vk)}/summary?channelId=${LIVE_CHANNEL}${force ? '&force=1' : ''}`,
+      { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' },
+    );
+    const data = (await res.json().catch(() => null)) as
+      | { ok: boolean; summary?: AiSummary; provider?: typeof aiProvider; reason?: string }
+      | null;
+    if (!res.ok || !data?.ok) {
+      aiError = data?.reason ?? `生成失败（HTTP ${res.status}）`;
+    } else if (data.summary) {
+      aiSummary = data.summary;
+      aiProvider = data.provider ?? aiProvider;
+    }
+  } catch (error) {
+    aiError = error instanceof Error ? error.message : '生成失败';
+  } finally {
+    aiLoading = false;
+    render();
+  }
 }
 
 /** 定时拉一次；数据没变就不重绘，避免演示时闪 */
@@ -268,8 +321,8 @@ function renderChips(): string {
   const chapters = r.source.chapters === 'none'
     ? '<span class="chip"><i></i>章节：未生成</span>'
     : '<span class="chip chip--real"><i></i>章节：官方 AI 大纲</span>';
-  const nar = r.engine.narrative === 'offline-model'
-    ? '<span class="chip chip--real"><i></i>解读：离线模型</span>'
+  const nar = aiSummary?.verdict
+    ? `<span class="chip chip--real"><i></i>解读：AI · ${esc(aiSummary.model)}</span>`
     : '<span class="chip"><i></i>解读：规则模板</span>';
   return cards + chapters + nar;
 }
@@ -314,14 +367,20 @@ function renderDist(): string {
 function renderFinding(f: TeacherFinding): string {
   const s = SPEC[f.level] ?? SPEC.low;
   const ev = f.evidence.map((e) => `<span><b>${esc(e.k)}</b>${esc(e.v)}</span>`).join('');
+  const ai = aiSummary?.findings?.[f.id];
+  const judgment = ai?.judgment?.trim() || f.judgment;
+  const action = ai?.action?.trim() || f.action;
+  const aiTag = ai?.judgment ? '<span class="tag" style="margin-left:auto">AI</span>' : '';
   return `<article class="finding ${s.cls}" data-fid="${esc(f.id)}">
     <div class="fHead">
       <span class="fLevel">${s.level}</span>
       <span class="fTime">${fmtTime(f.t0)}–${fmtTime(f.t1)}</span>
+      ${aiTag}
       <h3 class="fTitle">${esc(f.title)}</h3>
     </div>
     <div class="fEv">${ev}</div>
-    <p class="fJudge">${esc(f.judgment)}</p>
+    <p class="fJudge">${esc(judgment)}</p>
+    ${action ? `<div class="fActions"><span class="fActionK">下一步</span>${esc(action)}</div>` : ''}
     <div class="fActs">
       <button class="btn btn--tiny" data-range="${f.t0},${f.t1}" data-fid="${esc(f.id)}">在热力图上定位</button>
       <a class="btn btn--tiny" href="${studentUrl(f.t0)}">去学生端看这段</a>
@@ -331,19 +390,59 @@ function renderFinding(f: TeacherFinding): string {
 
 function renderInsight(): string {
   const r = report!;
-  if (!r.verdict) return '';
-  const plan = (r.plan ?? []).map((p, i) => `<li><span class="pn">${i + 1}</span>${esc(p)}</li>`).join('');
-  const lowSample = r.reliability.level !== 'ok'
+  const ready = aiProvider?.ready ?? false;
+  const hasAi = Boolean(aiSummary?.verdict);
+  const stale = hasAi && aiSummary!.cardsAtGeneration !== r.scale.cards;
+
+  const tag = hasAi
+    ? `<span class="tag">AI · ${esc(aiSummary!.model)}</span>`
+    : '<span class="tag">规则生成</span>';
+
+  const body = hasAi
+    ? `<p class="verdict">${esc(aiSummary!.verdict)}</p>`
+    : `<p class="verdict">${esc(r.verdict ?? '')}</p>`;
+
+  const actions = hasAi && aiSummary!.nextActions?.length
+    ? `<div class="aiActions">
+        <div class="aiActionsK">下一节课可以这样改</div>
+        <ol>${aiSummary!.nextActions.map((a) => `<li>${esc(a)}</li>`).join('')}</ol>
+      </div>`
+    : '';
+
+  const meta = hasAi
+    ? `<div class="aiMeta">
+        ${esc(aiSummary!.provider)} · ${esc(aiSummary!.model)} ·
+        生成于 ${esc(aiSummary!.generatedAt.slice(5, 16).replace('T', ' '))} ·
+        基于 ${aiSummary!.cardsAtGeneration} 张秒记${stale ? `（现在 ${r.scale.cards} 张，建议重新生成）` : ''}
+      </div>`
+    : '';
+
+  const lowSample = !hasAi && r.reliability.level !== 'ok'
     ? `<div class="notice">${esc(r.reliability.reason)}</div>`
     : '';
+
+  const error = aiError ? `<div class="notice notice--error">${esc(aiError)}</div>` : '';
+
+  const button = ready
+    ? `<button class="btn ${hasAi ? 'btn--tiny' : 'btn--primary'}" data-gen-ai="1" ${aiLoading ? 'disabled' : ''}>
+        ${aiLoading ? '生成中…' : hasAi ? '重新生成' : '用 AI 生成解读'}
+      </button>`
+    : `<span class="aiHint">未配置模型 key，暂用规则模板</span>`;
+
   return `<section class="panel panel--insight">
     <div class="panelHead">
       <h2>复盘结论</h2>
-      <span class="tag">${r.engine.narrative === 'offline-model' ? '离线模型' : '规则生成'}</span>
+      ${tag}
     </div>
-    <p class="verdict">${esc(r.verdict)}</p>
+    ${body}
     ${lowSample}
-    ${plan ? `<div class="planT" style="font-size:11px;color:var(--ink-3);margin:12px 0 8px;">下一步</div><ol class="plan" style="margin:0;padding-left:18px;font-size:12.3px;line-height:1.75;color:var(--ink-2)">${plan}</ol>` : ''}
+    ${error}
+    ${actions}
+    ${meta}
+    <div class="aiFoot">
+      ${button}
+      <span class="aiHint">手动生成 · 按课程缓存</span>
+    </div>
   </section>`;
 }
 
@@ -495,6 +594,11 @@ APP.addEventListener('click', (ev) => {
   const sessionBtn = el.closest('[data-vk]') as HTMLElement | null;
   if (sessionBtn?.dataset.vk) {
     void selectSession(sessionBtn.dataset.vk);
+    return;
+  }
+
+  if (el.closest('[data-gen-ai]') && currentVk) {
+    void generateAi(currentVk, Boolean(aiSummary));
     return;
   }
 
