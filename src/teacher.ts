@@ -540,12 +540,6 @@ function render(): void {
         </section>
 
         ${renderCards()}
-
-        <p class="footer">
-          数据来源：学生端「记一下」实时上报 <code>POST /api/notes</code> ·
-          聚合 <code>GET /api/teacher/&lt;videoKey&gt;</code> ·
-          每 ${LIVE_POLL_MS / 1000} 秒自动刷新
-        </p>
       </main>
 
       <aside class="rail">

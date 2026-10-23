@@ -409,8 +409,6 @@ code, .mono { font-family: var(--num); }
 
 .empty { font-size: 12.5px; color: var(--ink-3); text-align: center; padding: 28px 12px; }
 .err { padding: 40px; color: #a8362f; font-size: 13px; }
-.footer { font-size: 11px; color: var(--ink-3); padding: 6px 4px 0; line-height: 1.9; }
-.footer code { font-size: 10.5px; color: var(--ink-2); background: rgba(38, 77, 145, 0.06); padding: 1px 5px; border-radius: 4px; }
 
 @media (max-width: 1320px) {
   .shell { grid-template-columns: 232px minmax(0, 1fr) 312px; }
