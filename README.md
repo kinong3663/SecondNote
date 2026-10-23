@@ -43,7 +43,7 @@ npm run demo                          # http://127.0.0.1:8787
 | `POLYV_DEMO_CHANNEL_ID` / `POLYV_DEMO_VIDEO_ID` | ✅ | 观看页 URL 里的频道号 / 点播视频的 `vid` |
 | `LLM_PROVIDER` / `LLM_MODEL` / `LLM_API_KEY` | ⬜ | 模型厂商控制台；不配则教师端 AI 按钮变灰，其余功能正常 |
 
-完整表格（13 个变量、不填会怎样、怎么验证配对了、换一场演示改哪三行、密钥安全边界）：
+完整表格（13 个常用变量 + 2 个高级项、不填会怎样、怎么验证配对了、换一场演示改哪三行、密钥安全边界）：
 👉 **[`docs/配置说明.md`](docs/配置说明.md)**
 
 > 密钥只从服务端环境变量读取，浏览器永远拿不到；`.env.local` 已被 `.gitignore` 忽略；**禁止**写成 `VITE_*`（会被打进前端 bundle）。
