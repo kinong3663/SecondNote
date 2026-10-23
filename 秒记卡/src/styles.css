@@ -1961,3 +1961,92 @@ a {
   }
 }
 
+/* ---------- 未配置频道号时的引导页 ---------- */
+
+.setup-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.setup-card {
+  width: min(720px, 100%);
+  margin: auto;
+  padding: 40px 0 90px;
+}
+
+.setup-card h1 {
+  margin: 14px 0 20px;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.6vw, 46px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.setup-card h1 span {
+  color: var(--accent);
+}
+
+.setup-card p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.85;
+}
+
+.setup-card code {
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(36, 105, 243, 0.08);
+  color: var(--accent-deep);
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+}
+
+.setup-card pre {
+  margin: 18px 0 22px;
+  padding: 18px 22px;
+  overflow-x: auto;
+  border-radius: 14px;
+  background: #0f1b33;
+  box-shadow: 0 18px 40px rgba(15, 27, 51, 0.18);
+}
+
+.setup-card pre code {
+  padding: 0;
+  background: none;
+  color: #dbe6ff;
+  font-size: 14px;
+}
+
+.setup-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 22px;
+}
+
+.setup-steps span {
+  padding: 7px 14px;
+  border: 1px solid rgba(36, 105, 243, 0.16);
+  border-radius: 999px;
+  background: rgba(36, 105, 243, 0.07);
+  color: var(--accent-deep);
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+
+.setup-card .setup-hint {
+  font-size: 14px;
+  color: var(--subtle);
+}
+
+.setup-card .setup-foot {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--subtle);
+}
+

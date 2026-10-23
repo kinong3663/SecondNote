@@ -44,7 +44,8 @@ app.get('/api/health', (_request, response) => {
   response.json({
     ok: true,
     polyvConfigured: Boolean(credentials),
-    channelId: process.env.POLYV_DEMO_CHANNEL_ID || '8569582',
+    // 不再兜底成某个演示频道：没配就是空，前端会显示配置引导页
+    channelId: process.env.POLYV_DEMO_CHANNEL_ID || '',
     defaultVideoId: process.env.POLYV_DEMO_VIDEO_ID || '',
     defaultSource: process.env.POLYV_DEMO_SOURCE || '',
     noteTypes: NOTE_TYPES,

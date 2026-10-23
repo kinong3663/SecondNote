@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { NoteRail } from './components/NoteRail';
 import { PlayerStage } from './components/PlayerStage';
 import { ShareCardDialog } from './components/ShareCardDialog';
+import { SetupScreen } from './components/SetupScreen';
 import { VideoSwitcher } from './components/VideoSwitcher';
 import { fallbackBundle } from './data/fallbackBundle';
 import {
@@ -23,7 +24,7 @@ import { findNearbyCue, suggestSummary } from './lib/transcript';
 import { formatTime } from './lib/time';
 import type { SafeVideo } from './types';
 
-const DEFAULT_CHANNEL_ID = '8569582';
+const CHANNEL_ID_PATTERN = /^\d{4,20}$/;
 
 type InjectedConfig = { channelId?: string; teacherUrl?: string };
 
@@ -84,12 +85,15 @@ export default function App() {
   const requestedSource = initialParams.get('source');
   const injected = readInjectedConfig();
   const configuredChannelId =
-    injected.channelId && /^\d{4,20}$/.test(injected.channelId) ? injected.channelId : '';
-  const channelId = requestedChannelId?.match(/^\d{4,20}$/)
+    injected.channelId && CHANNEL_ID_PATTERN.test(injected.channelId) ? injected.channelId : '';
+  // 不做静默兜底：没有频道号就显式显示配置引导页（SetupScreen）
+  const channelId = requestedChannelId?.match(CHANNEL_ID_PATTERN)
     ? requestedChannelId
-    : configuredChannelId || DEFAULT_CHANNEL_ID;
+    : configuredChannelId;
   const [bundle, setBundle] = useState(fallbackBundle);
-  const [dataState, setDataState] = useState<'loading' | 'ready' | 'fallback'>('loading');
+  const [dataState, setDataState] = useState<'loading' | 'ready' | 'fallback' | 'unconfigured'>(
+    'loading',
+  );
   const [player, setPlayer] = useState<PolyvPlayerController | null>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(fallbackBundle.channel.duration);
@@ -105,6 +109,12 @@ export default function App() {
 
   useEffect(() => {
     let cancelled = false;
+    if (!channelId) {
+      setDataState('unconfigured');
+      return () => {
+        cancelled = true;
+      };
+    }
     setDataState('loading');
 
     const query = new URLSearchParams();
@@ -299,6 +309,10 @@ export default function App() {
     ) ??
     bundle.videos[0] ??
     fallbackBundle.videos[0];
+
+  if (dataState === 'unconfigured') {
+    return <SetupScreen />;
+  }
 
   return (
     <div className="app-shell">

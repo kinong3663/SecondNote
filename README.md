@@ -1,82 +1,107 @@
-# 秒记卡 Second Note · 保利威黑客松
+# 秒记卡 Second Note
 
 **学生点一下，秒数、字幕、自己的一句话一起留下；一个班点下来，老师看到的不是「多少人看完」，而是「哪一秒把人卡住了」。**
 
-学生端在点播播放器上点「记一下」→ 生成一张秒记卡（时间戳 + 平台字幕 + 可编辑摘要 + 类型），点时间戳可回到那一秒，可生成带二维码的分享卡；教师端把全班的卡聚合成「时间 × 类型」热力图、热点区段与可执行的复盘建议，AI 诊断是手动触发的、按课缓存。
+- **学生端**（`/`）：看保利威点播时点「记一下」→ 一张秒记卡（时间戳 + 平台字幕 + 可编辑摘要 + 类型）；点时间戳回到那一秒；可生成带二维码的分享卡，扫码直接跳到该秒。
+- **教师端**（`/teacher`）：把全班的卡聚合成「时间 × 类型」热力图、热点区段、可执行结论；AI 复盘手动触发、按课缓存。
 
 ---
 
-## 仓库结构
+## 5 分钟跑起来
 
-| 目录 / 文件 | 是什么 | 怎么跑 |
-|---|---|---|
-| **`秒记卡/`** | **主项目**：学生端（React 19 + Vite）+ 教师端（`/teacher`）+ Express 签名代理（8787） | `cd 秒记卡 && npm install && npm run demo` |
-| `src/`、`teacher.html` | 早期教师端原型（原生 TS，读 `public/data` 的离线样本）。**属于历史版本，主链路在 `秒记卡/`** | `npm run dev` / `npm run build:teacher` |
-| `public/data/` | 上面那个原型的离线样本（真实接口快照：场次、并发曲线、字幕、AI 大纲） | 静态读取 |
-| `scripts/` | 数据拉取与演示辅助：`seed-notes.mjs`（灌样例卡）、`verify-live.mjs`（链路自检）、`sync-teacher.mjs`（同步教师端产物）等 | `node scripts/xxx.mjs` |
-| `demo-video/` | 演示录屏脚本（Playwright）+ 分镜表 + 剪辑脚本。**视频素材留本地，不进库** | 见 `demo-video/剪辑素材/分镜表.md` |
-| `docs/` | 配置说明、接口与函数说明、保利威 API/SDK 清单（xlsx）、多学生扩展方案 | 直接读 |
-| `秒记卡-交接包/`、`秒记卡-交接包.zip` | 带便携 Node 运行时的本地交接包，**内含明文 `.env.local`**，仅本地使用（已 gitignore） | — |
-
----
-
-## 快速开始
+### 1. 装依赖
 
 ```powershell
 cd 秒记卡
-npm install
-Copy-Item .env.example .env.local     # 填 5 个必填，见下
-npm run demo                          # http://127.0.0.1:8787
+npm install          # Node ≥ 20
 ```
 
-- 学生端：<http://127.0.0.1:8787/>
-- 教师端：<http://127.0.0.1:8787/teacher>
+### 2. 配 `.env.local`（最少这 5 行）
 
-**没有密钥也能跑**：只 `npm install && npm run demo`，页面会明确显示「演示数据」，不会假装拿到了真数据。
+```powershell
+Copy-Item .env.example .env.local
+notepad .env.local
+```
 
-## 配置（重点）
+```dotenv
+POLYV_APP_ID=                # 保利威直播后台 → 设置 → 开发者信息
+POLYV_APP_SECRET=
+POLYV_VOD_USERID=            # 保利威点播后台 → 设置 → 开发者信息
+POLYV_VOD_SECRETKEY=
+POLYV_DEMO_CHANNEL_ID=       # 观看页地址 live.polyv.cn/watch/<这串数字>
+```
 
-| 变量 | 必填 | 从哪儿拿 |
+> 没配也会启动，但学生端会显示「还差一步：配置频道号」的引导页——**不会**偷偷打开别人的频道。
+> 全部 13 个变量（含 AI 复盘、换课怎么改）：见 [`docs/配置说明.md`](docs/配置说明.md)。
+
+### 3. 启动，打开两个页面
+
+```powershell
+npm run demo
+```
+
+| 页面 | 地址 | 期望看到 |
 |---|---|---|
-| `POLYV_APP_ID` / `POLYV_APP_SECRET` | ✅ | 保利威**直播**后台 → 设置 → 开发者信息（MD5 签名） |
-| `POLYV_VOD_USERID` / `POLYV_VOD_SECRETKEY` | ✅ | 保利威**点播**后台 → 设置 → 开发者信息（SHA1 签名） |
-| `POLYV_DEMO_CHANNEL_ID` | ✅ | 观看页 URL 里的数字，如 `live.polyv.cn/watch/4711207` → `4711207`；不填会退回代码里的兜底常量 `8569582`（别人的频道） |
-| `POLYV_DEMO_VIDEO_ID` | ⬜ 建议填 | 点播视频的 `vid`；留空则用该频道点播列表第一条，但教师端默认复盘会是空标题 |
-| `LLM_PROVIDER` / `LLM_MODEL` / `LLM_API_KEY` | ⬜ | 模型厂商控制台；不配则教师端 AI 按钮变灰，其余功能正常 |
+| 学生端 | <http://127.0.0.1:8787/> | 右上角标签是「**真实频道**」，视频能播，点播放器右下「记一下」能出卡 |
+| 教师端 | <http://127.0.0.1:8787/teacher> | 左栏 50 条点播，中间热力图；卡片少于 12 张会明确提示「样本偏少」 |
 
-完整表格（13 个常用变量 + 2 个高级项、不填会怎样、怎么验证配对了、换一场演示改哪三行、密钥安全边界）：
-👉 **[`docs/配置说明.md`](docs/配置说明.md)**
+### 4.（可选）让教师端更有内容 / 打开 AI
 
-> 密钥只从服务端环境变量读取，浏览器永远拿不到；`.env.local` 已被 `.gitignore` 忽略；**禁止**写成 `VITE_*`（会被打进前端 bundle）。
+```powershell
+# 灌 8 张样例卡（走真实接口，和真人点的一模一样）
+node scripts/seed-notes.mjs
+
+# AI 复盘：在 .env.local 再加三行，然后重启
+LLM_PROVIDER=dashscope
+LLM_MODEL=qwen-plus
+LLM_API_KEY=sk-...
+```
 
 ---
 
-## 文档索引
+## 目录
 
-| 文档 | 内容 |
+| 路径 | 是什么 |
 |---|---|
-| [`docs/配置说明.md`](docs/配置说明.md) | 环境变量全表、密钥怎么拿、怎么验证、别人 clone 后怎么改 |
-| [`docs/秒记卡-接口与函数说明.md`](docs/秒记卡-接口与函数说明.md) | 保利威两套签名、每个接口的封装函数、参数与返回、报错对照 |
-| [`docs/保利威-API与SDK清单.xlsx`](docs/保利威-API与SDK清单.xlsx) | 只含保利威：9 条 API + 15 个 SDK 函数（含是否使用） |
-| [`秒记卡/演示脚本.md`](秒记卡/演示脚本.md) | 4 分钟演示动线与台词 |
-| `demo-video/剪辑素材/分镜表.md` | 8 段录屏素材与脚本小节的对应、每个动作的秒数 |
+| `秒记卡/` | **主项目**：学生端 + 教师端 + Express 签名代理（8787） |
+| `docs/` | 配置说明、接口与函数说明、保利威 API/SDK 清单（xlsx） |
+| `scripts/` | 演示辅助：灌样例卡、链路自检、同步教师端产物 |
+| `demo-video/` | 演示录屏脚本与分镜表（视频素材留本地，不进版本库） |
+| `src/`、`teacher.html`、`public/data/` | 早期教师端原型（原生 TS + 离线样本），历史保留，主链路在 `秒记卡/` |
+| `docs/archive/` | 已作废的早期文档（ReLive 概念、60 秒脚本、agent 计划），仅供追溯 |
 
 ---
 
-## 技术栈
+## 文档
 
-- **前端**：React 19 + TypeScript + Vite；点播视频用 `mp4 直链 + 原生 <video>`，`@polyv/live-watch-sdk` 作为无直链时的回退
-- **服务端**：Node 20 + Express 4，两套签名（MD5 / SHA1）都在 Node 里算，兼做静态托管
-- **字幕**：保利威点播智能字幕（`/v2/video/{userid}/srt/list`，实测 3472 条）
-- **AI 复盘**：OpenAI 兼容接口（DeepSeek / 通义千问），手动触发 + 按课缓存 + 数字白名单校验（模型引用证据外的数字直接作废）
-- **分享卡**：Canvas 2D 画 1080×1440 + `qrcode`
-- **教师端**：Canvas 2D 手绘热力图（无图表库）
+| 文档 | 什么时候看 |
+|---|---|
+| [`docs/配置说明.md`](docs/配置说明.md) | 配不通、想确认参数从哪来、想换一场演示 |
+| [`docs/接口与函数说明.md`](docs/接口与函数说明.md) | 要改代码：两套签名、每个接口的封装函数与参数 |
+| [`docs/保利威-API与SDK清单.xlsx`](docs/保利威-API与SDK清单.xlsx) | 要交材料：9 条 API + 15 个 SDK 函数，标了是否使用 |
+| [`秒记卡/演示脚本.md`](秒记卡/演示脚本.md) | 要上台讲：4 分钟动线与台词 |
+| [`秒记卡/TEACHER.md`](秒记卡/TEACHER.md) | 教师端的数据口径与聚合规则 |
+| `demo-video/剪辑素材/分镜表.md` | 要剪视频：8 段录屏素材与脚本小节的对应 |
 
 ---
 
-## 上传 GitHub 前请注意
+## 常见问题
 
-- `.env.local`、运行期数据（`秒记卡/work/`）、构建产物（`dist/`）都已忽略。
-- 大目录不进库：`remotion-demo/`（933MB）、`demo-video/成片/`、`demo-video/剪辑素材/**/*.mp4`、`痛点段-图片包/`、`秒记卡-交接包*`。
-- 历史里曾有一次提交把 AppSecret 硬编码在 `scripts/pull-curves.mjs`，已改为只读环境变量并从历史中清理。**仍建议去保利威后台重置一次 AppSecret**，然后更新 `.env.local`。
+| 现象 | 原因 / 解决 |
+|---|---|
+| 页面显示「还差一步：配置频道号」 | `.env.local` 没设 `POLYV_DEMO_CHANNEL_ID` |
+| 视频空间是空的，控制台 `点播列表不可用` | 点播 `POLYV_VOD_USERID` / `POLYV_VOD_SECRETKEY` 没填或填错 |
+| 教师端 AI 按钮是灰的 | 没配 `LLM_API_KEY`；配完要**重启**（不热重载） |
+| 改了 `.env.local` 不生效 | `npm start` 只在启动时读一次 |
+| 热力图很空 | 卡片 < 12 张，先 `node scripts/seed-notes.mjs` |
+
+---
+
+## 上传 GitHub 前
+
+- `.env.local`、运行期数据（`秒记卡/work/`）、构建产物（`dist/`）已忽略；仓库里只有空值的 `.env.example`。
+- 大目录不进库：`remotion-demo/`、`demo-video/成片/`、`demo-video/剪辑素材/**/*.mp4`、`痛点段-图片包/`、`秒记卡-交接包*`。
+- 历史里曾把 AppSecret 硬编码在脚本中，已改为只读环境变量并从 git 历史清除。**仍建议去保利威后台重置一次 AppSecret**，再更新 `.env.local`。
 - 交接包 zip 内含明文密钥，不要上传到任何公开位置。
+
+> 技术栈：React 19 + Vite + TypeScript｜Node 20 + Express 4（签名代理）｜保利威点播 Open API + 智能字幕｜OpenAI 兼容模型｜Canvas 2D（分享卡 / 热力图）
