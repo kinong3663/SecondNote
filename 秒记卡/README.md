@@ -28,20 +28,20 @@ npm install
 # 只有想用「本地转写兜底」时才需要：python -m pip install -r requirements-asr.txt
 ```
 
-把模板复制成 `.env.local` 并填入 6 个必填项：
+把模板复制成 `.env.local` 并填入 5 个必填项：
 
 ```dotenv
 POLYV_APP_ID=              # 直播 AppID（直播后台 → 设置 → 开发者信息）
 POLYV_APP_SECRET=          # 直播 AppSecret
 POLYV_VOD_USERID=          # 点播 userid（点播后台 → 设置 → 开发者信息）
 POLYV_VOD_SECRETKEY=       # 点播 secretkey
-POLYV_DEMO_CHANNEL_ID=4711207
-POLYV_DEMO_VIDEO_ID=       # 要演示的那条点播视频的 vid
+POLYV_DEMO_CHANNEL_ID=     # 你的频道号，例如 4711207
+POLYV_DEMO_VIDEO_ID=       # 建议填；留空 = 该频道点播列表第一条
 ```
 
 可选：`LLM_PROVIDER` / `LLM_MODEL` / `LLM_API_KEY` 用于教师端 AI 复盘，不配则只显示规则模板。
 
-**13 个变量的完整说明、从哪儿拿、怎么验证配对了，见 [`../docs/配置说明.md`](../docs/配置说明.md)。**
+**全部变量的说明、从哪儿拿、怎么验证配对了，见 [`../docs/配置说明.md`](../docs/配置说明.md)。**
 
 构建并启动：
 

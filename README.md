@@ -25,7 +25,7 @@
 ```powershell
 cd 秒记卡
 npm install
-Copy-Item .env.example .env.local     # 填 6 个必填，见下
+Copy-Item .env.example .env.local     # 填 5 个必填，见下
 npm run demo                          # http://127.0.0.1:8787
 ```
 
@@ -40,7 +40,8 @@ npm run demo                          # http://127.0.0.1:8787
 |---|---|---|
 | `POLYV_APP_ID` / `POLYV_APP_SECRET` | ✅ | 保利威**直播**后台 → 设置 → 开发者信息（MD5 签名） |
 | `POLYV_VOD_USERID` / `POLYV_VOD_SECRETKEY` | ✅ | 保利威**点播**后台 → 设置 → 开发者信息（SHA1 签名） |
-| `POLYV_DEMO_CHANNEL_ID` / `POLYV_DEMO_VIDEO_ID` | ✅ | 观看页 URL 里的频道号 / 点播视频的 `vid` |
+| `POLYV_DEMO_CHANNEL_ID` | ✅ | 观看页 URL 里的数字，如 `live.polyv.cn/watch/4711207` → `4711207`；不填会退回代码里的兜底常量 `8569582`（别人的频道） |
+| `POLYV_DEMO_VIDEO_ID` | ⬜ 建议填 | 点播视频的 `vid`；留空则用该频道点播列表第一条，但教师端默认复盘会是空标题 |
 | `LLM_PROVIDER` / `LLM_MODEL` / `LLM_API_KEY` | ⬜ | 模型厂商控制台；不配则教师端 AI 按钮变灰，其余功能正常 |
 
 完整表格（13 个常用变量 + 2 个高级项、不填会怎样、怎么验证配对了、换一场演示改哪三行、密钥安全边界）：
