@@ -483,7 +483,7 @@ app.get('/teacher', (_request, response) => {
   try {
     response.type('html').send(renderTeacherHtml());
   } catch {
-    response.status(404).send('教师端还没构建：npm run build:teacher');
+    response.status(404).send('教师端还没构建：在仓库根目录跑 npm run deploy:teacher');
   }
 });
 app.use('/teacher', express.static(path.join(dist, 'teacher'), {

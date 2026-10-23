@@ -1,25 +1,27 @@
 /**
- * 把教师端构建产物和预置数据搬进秒记卡的 dist，交给同一个 Express 托管。
- * 用法：node scripts/sync-teacher.mjs
+ * 把教师端构建产物搬进秒记卡的 dist，交给同一个 Express 托管（/teacher）。
+ *
+ * 用法：在仓库根目录或 秒记卡/ 里都可以跑
+ *   node scripts/sync-teacher.mjs
+ *
+ * 注意：仓库根目录是用本文件位置算出来的，不是 process.cwd() ——
+ * 因为 秒记卡/package.json 的 postbuild 会用 秒记卡/ 作为工作目录调用它。
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = process.cwd();
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const teacherDist = path.join(ROOT, 'dist-teacher');
-const dataDir = path.join(ROOT, 'public', 'data');
 const target = path.join(ROOT, '秒记卡', 'dist');
 
-function copyDir(from, to, filter = () => true) {
+function copyDir(from, to) {
   fs.mkdirSync(to, { recursive: true });
   for (const entry of fs.readdirSync(from, { withFileTypes: true })) {
     const src = path.join(from, entry.name);
     const dest = path.join(to, entry.name);
-    if (entry.isDirectory()) copyDir(src, dest, filter);
-    else if (filter(src)) {
-      fs.mkdirSync(path.dirname(dest), { recursive: true });
-      fs.copyFileSync(src, dest);
-    }
+    if (entry.isDirectory()) copyDir(src, dest);
+    else fs.copyFileSync(src, dest);
   }
 }
 
@@ -29,23 +31,22 @@ if (!fs.existsSync(teacherDist)) {
   process.exit(0);
 }
 
-// 1. 页面 + 静态资源 → dist/teacher
 copyDir(teacherDist, path.join(target, 'teacher'));
-
-// 2. 预置数据 → dist/data（历史场次用；实时数据走 /api/teacher）
-copyDir(dataDir, path.join(target, 'data'));
 
 const count = (dir) => {
   let n = 0;
   const walk = (d) => {
     for (const e of fs.readdirSync(d, { withFileTypes: true })) {
       if (e.isDirectory()) walk(path.join(d, e.name));
-      else n++;
+      else n += 1;
     }
   };
   if (fs.existsSync(dir)) walk(dir);
   return n;
 };
 
-console.log(`[sync-teacher] teacher → ${path.relative(ROOT, path.join(target, 'teacher'))}  ${count(path.join(target, 'teacher'))} 个文件`);
-console.log(`[sync-teacher] data    → ${path.relative(ROOT, path.join(target, 'data'))}  ${count(path.join(target, 'data'))} 个文件`);
+console.log(
+  `[sync-teacher] teacher → ${path.relative(ROOT, path.join(target, 'teacher'))}  ${count(
+    path.join(target, 'teacher'),
+  )} 个文件`,
+);

@@ -63,12 +63,13 @@ LLM_API_KEY=sk-...
 
 | 路径 | 是什么 |
 |---|---|
-| `秒记卡/` | **主项目**：学生端 + 教师端 + Express 签名代理（8787） |
+| `秒记卡/` | **主项目**：学生端（React）+ Express 签名代理 + `/teacher`、`/api` |
+| `src/`、`teacher.html`、`vite.teacher.config.ts` | 教师端页面源码：构建到 `dist-teacher/`，再由 `scripts/sync-teacher.mjs` 同步进 `秒记卡/dist/teacher` |
 | `docs/` | 配置说明、接口与函数说明、保利威 API/SDK 清单（xlsx） |
-| `scripts/` | 演示辅助：灌样例卡、链路自检、同步教师端产物 |
-| `demo-video/` | 演示录屏脚本与分镜表（视频素材留本地，不进版本库） |
-| `src/`、`teacher.html`、`public/data/` | 早期教师端原型（原生 TS + 离线样本），历史保留，主链路在 `秒记卡/` |
 | `docs/archive/` | 已作废的早期文档（ReLive 概念、60 秒脚本、agent 计划），仅供追溯 |
+| `scripts/` | `seed-notes`（灌样例卡）、`verify-live`（链路自检）、`sync-teacher`、`check-*`（接口诊断） |
+| `demo-video/` | 演示录屏脚本与分镜表（视频素材留本地，不进版本库） |
+| `演示截图/` | 4 张界面截图 |
 
 ---
 
@@ -91,17 +92,13 @@ LLM_API_KEY=sk-...
 |---|---|
 | 页面显示「还差一步：配置频道号」 | `.env.local` 没设 `POLYV_DEMO_CHANNEL_ID` |
 | 视频空间是空的，控制台 `点播列表不可用` | 点播 `POLYV_VOD_USERID` / `POLYV_VOD_SECRETKEY` 没填或填错 |
+| `/teacher` 提示「教师端还没构建」 | 跑 `npm run deploy:teacher`（构建教师端并同步进 `秒记卡/dist`） |
 | 教师端 AI 按钮是灰的 | 没配 `LLM_API_KEY`；配完要**重启**（不热重载） |
 | 改了 `.env.local` 不生效 | `npm start` 只在启动时读一次 |
 | 热力图很空 | 卡片 < 12 张，先 `node scripts/seed-notes.mjs` |
 
 ---
 
-## 上传 GitHub 前
+## 技术栈
 
-- `.env.local`、运行期数据（`秒记卡/work/`）、构建产物（`dist/`）已忽略；仓库里只有空值的 `.env.example`。
-- 大目录不进库：`remotion-demo/`、`demo-video/成片/`、`demo-video/剪辑素材/**/*.mp4`、`痛点段-图片包/`、`秒记卡-交接包*`。
-- 历史里曾把 AppSecret 硬编码在脚本中，已改为只读环境变量并从 git 历史清除。**仍建议去保利威后台重置一次 AppSecret**，再更新 `.env.local`。
-- 交接包 zip 内含明文密钥，不要上传到任何公开位置。
-
-> 技术栈：React 19 + Vite + TypeScript｜Node 20 + Express 4（签名代理）｜保利威点播 Open API + 智能字幕｜OpenAI 兼容模型｜Canvas 2D（分享卡 / 热力图）
+React 19 + Vite + TypeScript｜Node 20 + Express 4（签名代理）｜保利威点播 Open API + 智能字幕｜OpenAI 兼容模型（DeepSeek / 通义千问）｜Canvas 2D（分享卡 / 热力图）

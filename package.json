@@ -1,21 +1,14 @@
 {
-  "name": "relive-teacher-review",
+  "name": "second-note-teacher",
   "private": true,
   "type": "module",
-  "description": "ReLive 教师端复盘台 —— 汇总观众「记住卡」，出热力图与 AI 诊断",
+  "description": "秒记卡 · 教师端工作台（热力图 + 诊断 + AI 复盘），构建产物交给 秒记卡/ 的 Express 托管在 /teacher",
   "scripts": {
-    "data:cards": "node scripts/build-cards.mjs",
-    "data:teacher": "node scripts/build-cards.mjs && node scripts/build-teacher.mjs",
-    "data:inspect": "node scripts/inspect-cards.mjs && node scripts/inspect-teacher.mjs",
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build",
     "build:teacher": "vite build --config vite.teacher.config.ts",
     "sync:teacher": "node scripts/sync-teacher.mjs",
     "deploy:teacher": "npm run build:teacher && npm run sync:teacher",
-    "verify:live": "node scripts/verify-live.mjs",
-    "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "check:teacher": "npx esbuild scripts/teacher-smoke.ts --bundle --platform=node --format=esm --outfile=tmp-teacher.mjs && node tmp-teacher.mjs"
+    "verify:live": "node scripts/verify-live.mjs"
   },
   "engines": {
     "node": ">=20"
