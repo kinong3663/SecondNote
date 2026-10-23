@@ -21,3 +21,12 @@ tmp-teacher.mjs
 秒记卡/work/whisper-models/
 秒记卡/dist/
 秒记卡/node_modules/
+
+# 交接包（含便携 Node 运行时与真实 .env.local，整包不进版本库）
+秒记卡-交接包/
+秒记卡-交接包.zip
+
+# 演示录屏素材（体积大，留在本地；只把脚本和分镜表进版本库）
+demo-video/raw/
+demo-video/剪辑素材/**/*.mp4
+demo-video/剪辑素材/**/*.png

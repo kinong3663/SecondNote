@@ -1,0 +1,268 @@
+{
+ "segments": [
+  {
+   "index": "00",
+   "name": "broll-student",
+   "file": "00-broll-student.mp4",
+   "duration": 12.08,
+   "cut": [
+    [
+     16.6,
+     28.68
+    ]
+   ],
+   "note": "开场空镜：学生端首屏 + 播放器在播（停在有字幕的位置），无点击",
+   "marks": [
+    {
+     "name": "ready",
+     "t": 2.03
+    },
+    {
+     "name": "end",
+     "t": 11.58
+    }
+   ]
+  },
+  {
+   "index": "01",
+   "name": "student-notes",
+   "file": "01-student-notes.mp4",
+   "duration": 31.54,
+   "cut": [
+    [
+     14.5,
+     46.04
+    ]
+   ],
+   "note": "裁掉学生端加载，从页面出图开始",
+   "marks": [
+    {
+     "name": "page-ready",
+     "t": 1.06
+    },
+    {
+     "name": "card1-seek",
+     "t": 3.24
+    },
+    {
+     "name": "card1-composer",
+     "t": 5.49
+    },
+    {
+     "name": "card1-typed",
+     "t": 9.91
+    },
+    {
+     "name": "card1-done",
+     "t": 12.36
+    },
+    {
+     "name": "card2-seek",
+     "t": 13.57
+    },
+    {
+     "name": "card2-composer",
+     "t": 15.61
+    },
+    {
+     "name": "card2-typed",
+     "t": 17.28
+    },
+    {
+     "name": "card2-done",
+     "t": 19.69
+    },
+    {
+     "name": "card3-seek",
+     "t": 20.89
+    },
+    {
+     "name": "card3-composer",
+     "t": 23.01
+    },
+    {
+     "name": "card3-typed",
+     "t": 26.76
+    },
+    {
+     "name": "card3-done",
+     "t": 29.28
+    }
+   ]
+  },
+  {
+   "index": "02",
+   "name": "seek-and-refresh",
+   "file": "02-seek-and-refresh.mp4",
+   "duration": 10.52,
+   "cut": [
+    [
+     14,
+     24.52
+    ]
+   ],
+   "note": "裁掉加载，留住「点时间戳跳回 + F5 还在」",
+   "marks": [
+    {
+     "name": "seek-back",
+     "t": 4.41
+    },
+    {
+     "name": "after-refresh",
+     "t": 7.84
+    }
+   ]
+  },
+  {
+   "index": "03",
+   "name": "share-card",
+   "file": "03-share-card.mp4",
+   "duration": 11.96,
+   "cut": [
+    [
+     16.8,
+     28.76
+    ]
+   ],
+   "note": "裁掉加载，从点分享开始",
+   "marks": [
+    {
+     "name": "share-open",
+     "t": 2.51
+    },
+    {
+     "name": "card-settled",
+     "t": 5.91
+    },
+    {
+     "name": "copied",
+     "t": 8.13
+    },
+    {
+     "name": "closed",
+     "t": 11.45
+    }
+   ]
+  },
+  {
+   "index": "04",
+   "name": "teacher-heatmap",
+   "file": "04-teacher-heatmap.mp4",
+   "duration": 14.12,
+   "cut": [
+    [
+     11.6,
+     25.72
+    ]
+   ],
+   "note": "裁掉教师端拉数据，从热力图出图开始",
+   "marks": [
+    {
+     "name": "teacher-ready",
+     "t": 2.5
+    },
+    {
+     "name": "heatmap-scan",
+     "t": 6.39
+    },
+    {
+     "name": "findings",
+     "t": 8.4
+    },
+    {
+     "name": "locate",
+     "t": 12.41
+    }
+   ]
+  },
+  {
+   "index": "05",
+   "name": "ai-review",
+   "file": "05-ai-review.mp4",
+   "duration": 20.68,
+   "cut": [
+    [
+     7,
+     27.68
+    ]
+   ],
+   "note": "裁掉加载，从点生成开始",
+   "marks": [
+    {
+     "name": "idle",
+     "t": 1.74
+    },
+    {
+     "name": "ai-click",
+     "t": 3.42
+    },
+    {
+     "name": "ai-done",
+     "t": 12.82
+    },
+    {
+     "name": "ai-panel",
+     "t": 18.36
+    }
+   ]
+  },
+  {
+   "index": "06",
+   "name": "back-to-student",
+   "file": "06-back-to-student.mp4",
+   "duration": 16.22,
+   "cut": [
+    [
+     1.2,
+     12.6
+    ],
+    [
+     24.5,
+     29.32
+    ]
+   ],
+   "note": "老师端定位 → 点回学生端 → 跳到学生端同一秒（中间的加载已跳切）",
+   "marks": [
+    {
+     "name": "teacher-ready",
+     "t": 2.68
+    },
+    {
+     "name": "findings",
+     "t": 6.94
+    },
+    {
+     "name": "click-back",
+     "t": 9.7
+    },
+    {
+     "name": "student-same-second",
+     "t": 13.27
+    }
+   ]
+  },
+  {
+   "index": "07",
+   "name": "broll-teacher",
+   "file": "07-broll-teacher.mp4",
+   "duration": 12,
+   "cut": [
+    [
+     1.6,
+     13.6
+    ]
+   ],
+   "note": "收尾空镜：教师端工作台，沿热力图慢扫",
+   "marks": [
+    {
+     "name": "ready",
+     "t": 2.44
+    },
+    {
+     "name": "end",
+     "t": 11.5
+    }
+   ]
+  }
+ ]
+}

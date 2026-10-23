@@ -1,0 +1,259 @@
+{
+ "segments": [
+  {
+   "index": "00",
+   "name": "broll-student",
+   "file": "00-broll-student.webm",
+   "duration": 27.81,
+   "marks": [
+    {
+     "name": "ready",
+     "t": 17.86,
+     "tInClip": 18.63
+    },
+    {
+     "name": "end",
+     "t": 27.41,
+     "tInClip": 28.18
+    }
+   ],
+   "videoDuration": 28.68,
+   "videoOffset": 0.77
+  },
+  {
+   "index": "01",
+   "name": "student-notes",
+   "file": "01-student-notes.webm",
+   "duration": 45.93,
+   "marks": [
+    {
+     "name": "page-ready",
+     "t": 15.55,
+     "tInClip": 15.56
+    },
+    {
+     "name": "card1-seek",
+     "t": 17.73,
+     "tInClip": 17.74
+    },
+    {
+     "name": "card1-composer",
+     "t": 19.98,
+     "tInClip": 19.99
+    },
+    {
+     "name": "card1-typed",
+     "t": 24.4,
+     "tInClip": 24.41
+    },
+    {
+     "name": "card1-done",
+     "t": 26.85,
+     "tInClip": 26.86
+    },
+    {
+     "name": "card2-seek",
+     "t": 28.06,
+     "tInClip": 28.07
+    },
+    {
+     "name": "card2-composer",
+     "t": 30.1,
+     "tInClip": 30.11
+    },
+    {
+     "name": "card2-typed",
+     "t": 31.77,
+     "tInClip": 31.78
+    },
+    {
+     "name": "card2-done",
+     "t": 34.18,
+     "tInClip": 34.19
+    },
+    {
+     "name": "card3-seek",
+     "t": 35.38,
+     "tInClip": 35.39
+    },
+    {
+     "name": "card3-composer",
+     "t": 37.5,
+     "tInClip": 37.51
+    },
+    {
+     "name": "card3-typed",
+     "t": 41.25,
+     "tInClip": 41.26
+    },
+    {
+     "name": "card3-done",
+     "t": 43.77,
+     "tInClip": 43.78
+    }
+   ],
+   "videoDuration": 46.04,
+   "videoOffset": 0.01
+  },
+  {
+   "index": "02",
+   "name": "seek-and-refresh",
+   "file": "02-seek-and-refresh.webm",
+   "duration": 23.56,
+   "marks": [
+    {
+     "name": "seek-back",
+     "t": 17.55,
+     "tInClip": 18.41
+    },
+    {
+     "name": "after-refresh",
+     "t": 20.98,
+     "tInClip": 21.84
+    }
+   ],
+   "videoDuration": 24.52,
+   "videoOffset": 0.86
+  },
+  {
+   "index": "03",
+   "name": "share-card",
+   "file": "03-share-card.webm",
+   "duration": 27.8,
+   "marks": [
+    {
+     "name": "share-open",
+     "t": 18.45,
+     "tInClip": 19.31
+    },
+    {
+     "name": "card-settled",
+     "t": 21.85,
+     "tInClip": 22.71
+    },
+    {
+     "name": "copied",
+     "t": 24.07,
+     "tInClip": 24.93
+    },
+    {
+     "name": "closed",
+     "t": 27.39,
+     "tInClip": 28.25
+    }
+   ],
+   "videoDuration": 28.76,
+   "videoOffset": 0.86
+  },
+  {
+   "index": "04",
+   "name": "teacher-heatmap",
+   "file": "04-teacher-heatmap.webm",
+   "duration": 24.79,
+   "marks": [
+    {
+     "name": "teacher-ready",
+     "t": 13.27,
+     "tInClip": 14.1
+    },
+    {
+     "name": "heatmap-scan",
+     "t": 17.16,
+     "tInClip": 17.99
+    },
+    {
+     "name": "findings",
+     "t": 19.17,
+     "tInClip": 20
+    },
+    {
+     "name": "locate",
+     "t": 23.18,
+     "tInClip": 24.01
+    }
+   ],
+   "videoDuration": 25.72,
+   "videoOffset": 0.83
+  },
+  {
+   "index": "05",
+   "name": "ai-review",
+   "file": "05-ai-review.webm",
+   "duration": 26.79,
+   "marks": [
+    {
+     "name": "idle",
+     "t": 7.95,
+     "tInClip": 8.74
+    },
+    {
+     "name": "ai-click",
+     "t": 9.63,
+     "tInClip": 10.42
+    },
+    {
+     "name": "ai-done",
+     "t": 19.03,
+     "tInClip": 19.82
+    },
+    {
+     "name": "ai-panel",
+     "t": 24.57,
+     "tInClip": 25.36
+    }
+   ],
+   "videoDuration": 27.68,
+   "videoOffset": 0.79
+  },
+  {
+   "index": "06",
+   "name": "back-to-student",
+   "file": "06-back-to-student.webm",
+   "duration": 28.66,
+   "marks": [
+    {
+     "name": "teacher-ready",
+     "t": 3.32,
+     "tInClip": 3.88
+    },
+    {
+     "name": "findings",
+     "t": 7.58,
+     "tInClip": 8.14
+    },
+    {
+     "name": "click-back",
+     "t": 10.34,
+     "tInClip": 10.9
+    },
+    {
+     "name": "student-same-second",
+     "t": 25.81,
+     "tInClip": 26.37
+    }
+   ],
+   "videoDuration": 29.32,
+   "videoOffset": 0.56
+  },
+  {
+   "index": "07",
+   "name": "broll-teacher",
+   "file": "07-broll-teacher.webm",
+   "duration": 12.71,
+   "marks": [
+    {
+     "name": "ready",
+     "t": 3.25,
+     "tInClip": 4.04
+    },
+    {
+     "name": "end",
+     "t": 12.31,
+     "tInClip": 13.1
+    }
+   ],
+   "videoDuration": 13.6,
+   "videoOffset": 0.79
+  }
+ ]
+}

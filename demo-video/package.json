@@ -1,0 +1,9 @@
+{
+  "name": "relive-demo-video",
+  "private": true,
+  "type": "module",
+  "scripts": {},
+  "dependencies": {
+    "hyperframes": "^0.8.188"
+  }
+}
